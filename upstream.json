@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/Leonxlnx/taste-skill.git",
+  "reviewedCommit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+  "sourcePath": "skills/taste-skill",
+  "policy": "Review upstream changes and selectively adopt approved improvements; never replace the customised skill wholesale.",
+  "reviewNotes": "Initial ui-dev baseline. Brand authority, human handoffs, Stitch workflow, writing integration, cross-agent hooks and corrected defaults are local customisations."
+}

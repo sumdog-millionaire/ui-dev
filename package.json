@@ -1,0 +1,43 @@
+{
+  "name": "ui-dev",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Brand-aware Taste workflow for Claude Code and Pi, with quiet design checks.",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "design",
+    "skills"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pi": {
+    "skills": [
+      "./skills/ui-dev",
+      "./skills/anti-ai-slop-writing"
+    ],
+    "extensions": [
+      "./extensions/impeccable.ts"
+    ]
+  },
+  "scripts": {
+    "impeccable": "node scripts/impeccable.ts"
+  },
+  "dependencies": {
+    "impeccable": "4.1.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "0.85.1",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}
