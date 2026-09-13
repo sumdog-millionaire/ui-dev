@@ -1,19 +1,19 @@
 # ui-dev
 
-A Claude Code plugin for designing and building interfaces: web pages, web apps, and the phone and
-native surfaces beside them. One design skill routes the work by what the visitor is there to do,
-hands motion to Emil Kowalski's skills, drives Google Stitch through its MCP server, and runs the
-Impeccable detector quietly after every edit.
+A Claude Code plugin for designing and building interfaces: web pages and web apps, with the phone
+and native surfaces handled by the skills beside the design skill. One design skill routes the work
+by what the visitor is there to do, hands motion to Emil Kowalski's skills, drives Google Stitch
+through its MCP server, and runs the Impeccable detector quietly after every edit.
 
 This folder is the source. It is a git repository (`sumdog-millionaire/ui-dev`) installed in place at
 `~/.claude/skills/ui-dev/`, which Claude Code loads as a plugin on every session, hooks included.
-Edit here, commit here, push here. A second machine clones it to the same path.
+Edit, commit and push here. A second machine clones it to the same path.
 
 ## What is in it
 
 | Path | Holds |
 |---|---|
-| `skills/ui-dev/` | the design skill: a short body that reads the brief and picks a mode, plus references loaded on demand (workflow, brands, the modes, Stitch, the design file, verification, styles, patterns, redesign, design systems, motion skeletons) |
+| `skills/ui-dev/` | the design skill: a short body that reads the brief and picks a mode, plus references loaded on demand |
 | `skills/animate`, `animate-expo`, `review-animations`, `improve-animations`, `pick-ui-library`, `prototype`, `apple-design`, `write-swift` | Emil Kowalski's skills, vendored; `ui-dev` hands all interface motion to `animate` |
 | `skills/upstream-review/` | the maintenance skill: walks `upstream.json`, diffs each source since the reviewed commit, proposes adopt, adapt or skip |
 | `hooks/`, `scripts/` | the Impeccable detector adapter: a PostToolUse check after every Edit or Write, a deeper pass at the end of a turn |
@@ -58,9 +58,8 @@ The same key goes in `.env` for the upload script. Nothing here stores it anywhe
 
 The hooks run Impeccable's detector (npm `impeccable`, pinned in `package.json`) on every Edit or
 Write of a UI file and once more when a turn ends. Clean results are silent; findings reach the agent
-with the command to record a narrow exception. The end-of-turn pass blocks the turn until findings
-are dealt with, and never blocks on a repeated stop or on a fault in the engine itself. Project
-settings in `.impeccable/config.json` are respected and never rewritten.
+with the command to record a narrow exception, and the end-of-turn pass blocks the turn until they
+are dealt with. Project settings in `.impeccable/config.json` are respected.
 
 Run it by hand from the project being checked:
 
@@ -72,8 +71,7 @@ node "$HOME/.claude/skills/ui-dev/scripts/impeccable.ts" detect frontend/
 
 `/ui-dev:upstream-review` fetches each repository in `upstream.json`, shows what changed in the
 watched paths since the commit last reviewed, and waits for a choice per change. Nothing is
-replaced wholesale; vendored copies keep their local edits, and the skill's own em-dash strip is
-re-run on anything re-synced.
+replaced wholesale; vendored copies keep their local edits.
 
 ## Attribution
 

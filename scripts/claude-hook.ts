@@ -3,10 +3,7 @@ import { runDetector, type HookEvent } from "./detector.ts";
 let event: HookEvent | undefined;
 try {
   let input = "";
-  for await (const chunk of process.stdin) {
-    input += String(chunk);
-    if (input.length > 8 * 1024 * 1024) throw new Error("ui-dev: hook input exceeds 8 MiB");
-  }
+  for await (const chunk of process.stdin) input += String(chunk);
   event = JSON.parse(input) as HookEvent;
   // A Stop that Claude is already continuing from must never block again, whatever the engine says.
   if (!(event.hook_event_name === "Stop" && event.stop_hook_active)) {

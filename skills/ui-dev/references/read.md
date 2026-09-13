@@ -1,13 +1,11 @@
 # Read
 
-Read when the design read picks read: docs, articles, guides, help, changelogs, long-form. The
-visitor came to understand something. Structure for comprehension, then make the reading worth
-staying in. Read surfaces take operate.md's rules on consistency, states and copy; this file holds
-what differs.
+Read when the design read picks read: docs, articles, guides, help, changelogs, long-form. Read
+surfaces also take operate.md's rules on consistency, states and copy.
 
 ## Measure and rhythm
 
-- Prose sits in a column of 45 to 75 characters, capped with its holder; wider lines take more leading. Body at 16px or above, zoomable, with the person's font settings honoured.
+- Prose sits in a column of 65 to 75 characters, capped with its holder; wider lines take more leading. Body at 16px or above, zoomable, with the person's font settings honoured.
 - Paragraph rhythm is spacing or a first-line indent, not both.
 - Light text on a dark surface is compensated on all three axes: a little more line height, a touch more tracking, one step more weight where the face needs it.
 - Numeric, tabular and code features are on where the content benefits; only the used font weights load, with metric-compatible fallbacks and no blocked text.
@@ -22,6 +20,5 @@ what differs.
 
 ## Stability
 
-A single well-tuned family and a fixed role scale are usually right; reading surfaces stay spatially
-predictable, with no display type responding to the viewport. Motion serves feedback and
-continuity only; nothing on a docs page loads with choreography.
+No display type responds to the viewport. Motion serves feedback and continuity only; nothing on a
+docs page loads with choreography.

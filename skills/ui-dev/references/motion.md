@@ -1,24 +1,22 @@
 # Scroll storytelling
 
 Read when a persuade or experience direction carries narrative motion: a section that pins while a
-scene advances, a horizontal pan, a staggered reveal. Everything about ordinary interface motion,
-its curves, durations, springs and whether it should exist, is `animate`'s; this file holds only the
-storytelling shapes `animate` does not carry, and the rules that keep them honest.
+scene advances, or a horizontal pan. Curves, durations and springs come from `animate`.
 
 ## Before building
 
 Describe the trigger, the moving subject, the start, middle and end states, what happens on
 interruption and reversal, the responsive geometry, and the reduced-motion alternative. A storyboard
 at 0, 25, 50 and 100 percent is usually enough; a runnable prototype only when behaviour cannot be
-judged from it. A static screen establishes composition and a click-through establishes navigation;
-neither demonstrates a scroll-linked animation, so record what was actually observed.
+judged from it. Record what was observed running; a static screen or a click-through does not show
+scroll-linked motion.
 
 ## Principles
 
-- Normal document scrolling. Native sticky positioning holds a scene while its container's scroll distance advances the animation, and the container ends naturally so following content stays reachable. Wheel and touch input are never intercepted, and there is no locked state; keyboard, touch and scrollbar all work.
-- Geometry comes from the actual containers, refreshed after resize or asset layout, with function-based dimensions and cleanup of every listener and trigger. A travel distance cached only at mount is wrong after the first resize.
+- Normal document scrolling. Native sticky positioning holds a scene while its container's scroll distance advances the animation, and the container ends naturally so following content stays reachable. Keyboard, touch, wheel and scrollbar all keep working.
+- Geometry comes from the actual containers, refreshed after resize or asset layout, with function-based dimensions and cleanup of every listener and trigger.
 - The base content reads if enhancement fails. Reduced motion removes travel, parallax and pinning while keeping the content and the useful state changes.
-- A travelling subject may follow a different path on desktop and mobile while keeping its narrative; mobile keeps the concept, not a stripped version.
+- A travelling subject may follow a different path on desktop and mobile while keeping its narrative.
 - `transform` and `opacity` where they achieve the effect; blur, large filters and canvas work need measured justification on target devices. Never the same entrance on every section, and essential content never waits for an animation.
 - Split display text keeps its reading order and copy for assistive technology; animated spans never duplicate screen-reader content. A price, date or other authoritative number is never counted up from zero for decoration.
 - Navigation stays interruptible and reflects real completion, never a fixed timeout; a failed animation never strands the person behind an overlay.
@@ -84,7 +82,7 @@ export function StickyStack({ cards }: { cards: React.ReactNode[] }) {
 }
 ```
 
-Critical points: `start: "top top"`, `pin: true`, every card except the last is pinned, the scale/opacity transform is driven by the NEXT card's scroll trigger (so previous card shrinks as next one arrives).
+The scale and opacity transform is driven by the next card's trigger, so the previous card shrinks as the next arrives.
 
 ## Horizontal pan
 
@@ -148,42 +146,7 @@ export function HorizontalPan({ children }: { children: React.ReactNode }) {
 }
 ```
 
-Critical points: `start: "top top"`, `pin: true`, `end: "+=${distance}"` (scroll length = horizontal travel needed), `scrub: 1`. The wrapper is pinned, the inner track slides horizontally as the user scrolls vertically.
-
-## Scroll-reveal stagger
-
-For simple "items appear as they enter viewport" (no pinning), prefer Motion's `whileInView` over GSAP - lighter, no ScrollTrigger needed:
-
-```tsx
-"use client";
-import { motion, useReducedMotion } from "motion/react";
-
-export function RevealStagger({ items }: { items: string[] }) {
-  const reduce = useReducedMotion();
-  return (
-    <ul className="grid gap-6">
-      {items.map((item, i) => (
-        <motion.li
-          key={item}
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{
-            duration: 0.3,
-            delay: i * 0.06,                 // stagger and curve are animate's values
-            ease: [0.23, 1, 0.32, 1],
-          }}
-        >
-          {item}
-        </motion.li>
-      ))}
-    </ul>
-  );
-}
-```
-
-Use this for feature lists, testimonial grids, logo walls, anything that only needs to enter on scroll; GSAP is for pin and scrub work. The duration, stagger and curve come from `animate`.
-
+The wrapper is pinned and the inner track slides horizontally as the person scrolls vertically; the scroll length equals the horizontal travel.
 
 ## Scroll mechanics
 

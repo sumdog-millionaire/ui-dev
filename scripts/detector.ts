@@ -38,9 +38,9 @@ export function invokeImpeccable(args: string[], input: string, cwd: string): Pr
       env: {
         ...process.env,
         IMPECCABLE_SELF: self,
+        // Skill discovery off; the engine speaks Claude's hook protocol whichever harness runs it.
         IMPECCABLE_SKILL_DIR: "",
         IMPECCABLE_PROVIDER_ID: "source",
-        // Both adapters use the same upstream wire protocol, not its skill discovery.
         IMPECCABLE_HOOK_HARNESS: "claude",
         IMPECCABLE_HOOK_QUIET: "1",
       },
@@ -57,9 +57,9 @@ export function invokeImpeccable(args: string[], input: string, cwd: string): Pr
 }
 
 export async function runDetector(event: HookEvent): Promise<string> {
+  // Without these the engine fails with a bare stack trace; naming the field is the whole point.
   assert(typeof event.cwd === "string" && event.cwd.length > 0, "ui-dev: hook cwd is required");
   assert(typeof event.session_id === "string" && event.session_id.length > 0, "ui-dev: hook session_id is required");
-  assert(event.hook_event_name === "PostToolUse" || event.hook_event_name === "Stop", "ui-dev: unsupported hook event");
   const { stdout, stderr, exitCode } = await invokeImpeccable(["hook"], JSON.stringify(event), event.cwd);
   if (exitCode !== 0) throw new Error(`ui-dev: hook failed; check not completed. ${stderr || stdout}`);
   if (stderr) process.stderr.write(stderr);
@@ -67,8 +67,5 @@ export async function runDetector(event: HookEvent): Promise<string> {
   const result = JSON.parse(stdout) as { hookSpecificOutput?: { additionalContext?: unknown } };
   const context = result.hookSpecificOutput?.additionalContext;
   assert(typeof context === "string", "ui-dev: unexpected detector response; check not completed");
-  return context
-    .replaceAll("/impeccable hooks", `${self} hooks`)
-    .replaceAll("/impeccable document", "the design-file reference in the ui-dev skill (references/design-file.md) to refresh DESIGN.md and its sidecar")
-    + "\nui-dev: preserve the approved brand and design. Fix real defects; disclose narrow, evidence-backed exceptions. Browser verification is still required.";
+  return context;
 }

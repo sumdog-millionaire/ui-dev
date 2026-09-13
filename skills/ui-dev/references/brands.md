@@ -1,6 +1,6 @@
 # Local brand packs
 
-Packs live in the working repository at `data/brand/<slug>/`, in both Claude Code and Pi. A pack belongs to the project, not the machine: it holds client material the project was given, and it should travel with the checkout rather than sit in a user's home folder. Confirm that the location is gitignored before writing into it, and say so. When production code needs an asset, copy only the web-ready files into a tracked location such as `config/brand/`; the pack itself stays untracked. An explicitly supplied pack path may override the default. Use portable relative paths inside each pack.
+Packs live in the working repository at `data/brand/<slug>/`, gitignored. Confirm that the location is gitignored before writing into it, and say so. When production code needs an asset, copy only the web-ready files into a tracked location such as `config/brand/`. An explicitly supplied pack path may override the default. Use portable relative paths inside each pack.
 
 ```text
 <brand>/
@@ -17,15 +17,11 @@ Packs live in the working repository at `data/brand/<slug>/`, in both Claude Cod
     patterns/
 ```
 
-BRAND.md and TONE-OF-VOICE.md are equally important and kept separate, because looks and sound are consulted by different work: a layout task reads the first, a copy task reads the second. Voice needs room for verbatim examples, full banned-word lists and a register per content type, and compressing it into a section of BRAND.md loses what makes it usable.
+A layout task reads BRAND.md; a copy task reads TONE-OF-VOICE.md. Write ASSET-INDEX.md once filenames alone cannot guide a choice, for example when three logo variants exist and the right one depends on background and size, and record there the `assets/{id}` of the brand's Stitch design system once it is registered (stitch.md).
 
-ASSET-INDEX.md is the decision layer over the files. Write it once filenames alone cannot guide a choice, for example when three logo variants exist and the right one depends on background and size.
+Where a brand has a single overarching frame, one idea everything else serves, state it at the top of both documents.
 
-Where a brand has a single overarching frame, one idea everything else serves, state it at the top of both documents rather than burying it under the detail.
-
-Create only directories with supplied material; a sparse pack is valid. Keep client material outside the ui-dev repository and distribution.
-
-The pack states what the brand is. The project's design system is a separate document, `DESIGN.md` at the repo root (design-file.md), written from the pack's facts in token form and evolving with each build; it names the pack as its source and nothing is copied between them. When a pack's brand is registered in Stitch, it is registered once as a global design system, reusable across that brand's projects, and its asset id is recorded in ASSET-INDEX.md.
+Create only directories with supplied material; a sparse pack is valid. The project's design system is `DESIGN.md` at the repo root (design-file.md).
 
 ## Selection and missing packs
 
@@ -36,10 +32,10 @@ Read BRAND.md and relevant original guidance before relying on a rule whose mean
 ## Onboarding
 
 1. Accept guidelines, examples, URLs and asset folders. Inspect the actual supplied material with suitable document/image tools. Identify unreadable files or missing capabilities; never claim to have extracted them.
-2. Copy originals without modification into sources/ and approved reusable assets into the relevant assets/ directory. Preserve existing files; do not overwrite a different asset with the same filename. Record the relative path, source location and applicable rights/restrictions. A supplied file is not evidence of every possible reuse right.
+2. Copy originals without modification into sources/ and approved reusable assets into the relevant assets/ directory. Preserve existing files; do not overwrite a different asset with the same filename. Record the relative path, source location and the applicable rights and restrictions with each asset.
 3. Draft BRAND.md using the outline below. Each sourced rule names its source file and page/section where available. Mark unknowns and contradictory evidence rather than manufacturing certainty. Summarise sources; retain exact required wording separately where precision matters.
 4. Draft TONE-OF-VOICE.md using the outline below, wherever voice material exists. Preserve approved and rejected copy verbatim, because a paraphrased example teaches the wrong thing. Reproduce banned lists in full rather than summarising them. Correct source typos before an example reaches a prompt, and list every correction so the change is visible.
-5. Check what the material does not cover. Brand guidelines are usually print-first and routinely state no type scale, grid, spacing, components or motion. Say so plainly rather than inventing rules. Derive the missing patterns from the client's own finished digital work, and record them as observations, separate from stated rules, so a reader can tell what the brand said from what the brand did.
+5. Check what the material does not cover. Brand guidelines are often print-first and may state no type scale, grid, spacing, components or motion. Say so plainly rather than inventing rules. Derive the missing patterns from the client's own finished digital work, and record them as observations, separate from stated rules, so a reader can tell what the brand said from what the brand did.
 6. Show the profile, unresolved material questions and asset inventory. Ask for approval once before first use. For material later changes, show the changes and obtain approval again. Record only approval actually given.
 
 ## BRAND.md outline

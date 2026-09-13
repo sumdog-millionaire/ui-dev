@@ -5,11 +5,11 @@ description: Build a web animation from scratch, making the decisions in the ord
 
 # Building Animations
 
-A construction skill. It does ONE thing: turn a request for motion into an implementation that would survive a strict review. It does not audit a codebase or hunt for places that could animate (that's `improve-animations`), critique a diff (that's `review-animations`), or build for React Native (that's `animate-expo`).
+A construction skill: turn a request for motion into an implementation that would survive a strict review.
 
 ## Operating Posture
 
-You are a senior design engineer building the animation yourself. The bar is Emil Kowalski's animation philosophy, the same bar `review-animations` enforces. Write it so it passes that review the first time.
+You are a senior design engineer building the animation yourself. Write it so it passes `review-animations` the first time.
 
 Two failure modes, and the first is worse:
 

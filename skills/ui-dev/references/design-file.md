@@ -1,26 +1,23 @@
 # The product and design files
 
-Two files at the repo root carry a project's design facts. Both are read by the Impeccable detector;
-DESIGN.md is also what Stitch takes in to build a design system, what it exports with a project, and
-what the design.md command-line tool lints.
+Two files at the repo root carry a project's design facts. Tools read DESIGN.md's YAML front
+matter; prose alone sets nothing.
 
 ## PRODUCT.md
 
 The product record, facts only, no visual direction. Sections: Platform (`web`, or `ios`, `android`,
 `adaptive`, which switches the detector off), Stack (a new project only), Users, Product Purpose,
 Positioning, Operating Context, Capabilities and Constraints, Brand Commitments, Evidence on Hand,
-Product Principles, Accessibility and Inclusion. Each claim is drawn from the project's own records,
-which win where this file disagrees. It is written once and touched when a fact changes.
+Product Principles, Accessibility and Inclusion. Draw each claim from the project's own records. It
+is written once and touched when a fact changes.
 
 ## DESIGN.md
 
-The project's design system, written from the built world rather than before it: a rulebook
-written first gets defended against reality instead of describing it. It starts as the brand pack's
-facts (brands.md) translated into tokens and evolves with each build. The pack's BRAND.md says what
-the brand is; this file says what this product's design system is. Nothing is copied between them:
-this file points at the pack for sources.
+The project's design system, written from the built world. It starts as the brand pack's facts
+(brands.md) translated into tokens and evolves with each build. Nothing is copied between the pack
+and this file: this file points at the pack for sources.
 
-The spec (google-labs-code/design.md, alpha) has two layers:
+The spec, version `alpha`, has two layers:
 
 **YAML front matter**, the machine-readable tokens, which are what Stitch and the detector actually
 read. Keys: `version` (`alpha`), `name`, `description`, `omitted` (sections left out, with reasons),
@@ -37,7 +34,8 @@ rounded `none`, `sm`, `md`, `lg`, `xl`, `full`.
 **Markdown body**, the human rationale, in eight `##` sections in this order, any of which may be
 omitted: Overview (or Brand & Style), Colors, Typography, Layout (or Layout & Spacing), Elevation &
 Depth (or Elevation), Shapes, Components, Do's and Don'ts. Headings are verbatim because tools
-parse them. Extra sections are preserved by every consumer; a duplicate heading rejects the file.
+parse them. Extra sections are preserved by every consumer; a duplicate heading makes the file
+invalid.
 Prose may use descriptive colour names that correspond to the tokens.
 
 A minimal example:

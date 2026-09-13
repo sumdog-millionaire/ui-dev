@@ -1,8 +1,8 @@
 # Pattern vocabulary
 
-Names for composing a persuade or experience direction and for briefing Stitch. A vocabulary, not a
-library: know the names, reach for one when the design read calls for it, and describe it in the
-brief by name. Anything that moves is built by `animate`.
+Names for composing a persuade or experience direction and for briefing Stitch. Reach for a name
+when the design read calls for it, and use it in the brief. Anything that moves is built by
+`animate`.
 
 ### Hero
 - **Asymmetric split hero**: text on one side, asset on the other, generous space.
@@ -26,12 +26,11 @@ brief by name. Anything that moves is built by `animate`.
 - **Masonry**: staggered grid with no fixed row height.
 - **Chroma grid**: borders or tiles with subtly animating gradients.
 - **Split-screen scroll**: two halves sliding in opposite directions.
-- **Sticky-stack sections**: sections that pin and stack on scroll.
 
 ### Cards and containers
 - **Parallax tilt card**: 3D tilt tracking the pointer.
 - **Spotlight border card**: borders illuminate under the cursor.
-- **Glass panel**: frosted glass with inner refraction and a solid fallback.
+- **Glass panel**: frosted glass with inner refraction.
 - **Holographic foil card**: iridescent shift on hover.
 - **Swipe stack**: a physical card stack, swiped away.
 - **Morphing modal**: a button expands into its own dialog.

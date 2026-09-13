@@ -5,15 +5,11 @@ description: Survey a codebase's animation and motion code as a senior motion ad
 
 # Improving Animations
 
-An advisor skill modeled on the audit-then-plan workflow: use the capable model for the part where judgment compounds, understanding the codebase's motion, deciding what's worth fixing, writing the spec, and hand execution to any agent, including cheaper models.
-
-It does ONE thing: survey animation and motion code, then produce prioritized findings and implementation plans. It does not review a single diff (that's `review-animations`), and it does not implement fixes itself.
+An advisor skill: survey the codebase's motion, decide what is worth fixing, write the spec, and hand execution to another agent.
 
 ## Operating Posture
 
 You are a senior design engineer with a brutal eye for craft. Your job is to find the animation work with the highest leverage, the `ease-in` that makes every dropdown feel sluggish, the keyframes that make toasts jump, the keyboard action that should never have animated, and turn each into a plan so precise that a model with zero context can execute it without taste of its own.
-
-The bar comes from Emil Kowalski's animation philosophy. The workflow, recon, parallel audit, vetting, self-contained plans, is adapted from senior-advisor codebase auditing.
 
 The rule catalog with precise values lives in [AUDIT.md](AUDIT.md). The plan format lives in [PLAN-TEMPLATE.md](PLAN-TEMPLATE.md). Load them when you audit and when you write plans.
 

@@ -1,18 +1,17 @@
 ---
 name: ui-dev
-description: Design and build any interface, a marketing page, a web app, a document or docs site, a portfolio, and the phone surface beside them, from brief to verified build. Reads the brief, picks the mode the visitor is in, works from the brand pack, resolves the design decisions, renders the direction in Google Stitch through its MCP server for the user to iterate, then implements the approved screens and verifies them in a browser. Use whenever the user wants to design, redesign, build, restyle, extend or fix a UI, page, screen, dashboard, component, landing page, prototype or brand pack, or asks how to use Stitch. Hands interface motion to animate on the web and animate-expo on React Native.
+description: Design and build any interface, a marketing page, a web app, a document or docs site, a portfolio, and the phone surface beside them, from brief to verified build. Reads the brief, picks the mode the visitor is in, works from the brand pack, resolves the design decisions, renders the direction in Google Stitch through its MCP server for the user to iterate, then implements the approved screens and verifies them in a browser. Use whenever the user wants to design, redesign, build, restyle, extend or fix a UI, page, screen, dashboard, component, landing page or brand pack, or asks how to use Stitch. Hands interface motion to animate on the web and animate-expo on React Native.
 ---
 
 # ui-dev
 
-Every aesthetic rule in this skill is a default. Explicit brand rules and approved project choices win
-over it, and the absence of a rule is creative freedom. Accessibility, security and factual accuracy
-are requirements throughout, whatever the direction.
+Brand rules and approved project choices beat every aesthetic rule here, and the absence of a rule
+is creative freedom. Accessibility, security and factual accuracy are requirements throughout.
 
 ## Start here
 
-Read [workflow.md](references/workflow.md) first: it holds the stages, the two approval gates, and
-the routes through Stitch. Then load only what the task needs:
+Read [workflow.md](references/workflow.md) first: the stages, the two approval gates, and the routes
+through Stitch. Then load only what the task needs:
 
 | When | Read |
 |---|---|
@@ -24,43 +23,33 @@ the routes through Stitch. Then load only what the task needs:
 | the surface already exists and is being changed | [redesign.md](references/redesign.md) |
 | composing a persuade or experience direction | [patterns.md](references/patterns.md) |
 | the brief names a visual language (soft, minimalist, brutalist, or a Stitch style word) | [styles.md](references/styles.md) |
-| a named design system or aesthetic family is in play | [design-systems.md](references/design-systems.md) |
-| scroll storytelling: sticky stacks, horizontal pans, staggered reveals | [motion.md](references/motion.md) |
+| a named design system or aesthetic family is in play, or a new project needs a foundation | [design-systems.md](references/design-systems.md) |
+| scroll storytelling: sticky stacks, horizontal pans | [motion.md](references/motion.md) |
 
-**Motion belongs to `animate`.** Every constant, curve, duration and rule about interface motion,
-and the decision whether a thing animates at all, is `animate`'s on the web and `animate-expo`'s on
-React Native; `apple-design` supplies the reasoning and physics when the brief asks for that feel.
-This skill keeps two things: a surface has one authored moment of motion, and the scroll
-storytelling skeletons in motion.md. A control used a hundred times a day gets no animation,
-whatever the motion dial says.
+**Motion is written by `animate`** on the web and `animate-expo` on React Native, which own every
+constant, curve and duration and the decision whether a thing animates at all; `apple-design`
+supplies the reasoning and physics when the brief asks for that feel; `pick-ui-library` chooses a
+component when a task needs one rather than an animation. A surface gets one authored moment of
+motion.
 
-**Writing belongs to the writing skill.** Any prose a person will read is authored or revised with
-`anti-ai-slop-writing`, with the brand's voice and market conventions taking precedence over its
-default register. Supplied facts, quotations and protected text are preserved.
+**Prose is written or revised with `anti-ai-slop-writing`**, with the brand's voice and market
+conventions taking precedence over its default register. Supplied facts, quotations and protected
+text are preserved.
 
-**Decisions belong to the user.** For a new direction, invoke `grilling` if it is installed and
-follow its rounds until the frontier is empty; if it is not installed, say so once and ask the same
-way. Ask for decisions, never for facts you can read from the project, and recommend with each
-question.
-
-**Companions.** When installed, these are called by name: `extract-static-html` to capture a running
-screen as one HTML file, `upload-to-stitch` to post images and HTML to Stitch, `extract-design-md`
-to read a DESIGN.md out of existing source, `react-components` to turn a Stitch screen into React,
-`pick-ui-library` when a task needs a component rather than an animation. Their own confirmation
-gates and folder conventions do not apply; this workflow's do.
+**Companions**, called by name when they are installed: `extract-static-html` captures a running
+screen as one HTML file, `upload-to-stitch` posts images and HTML to Stitch, `extract-design-md`
+reads a DESIGN.md out of existing source, `react-components` turns a Stitch screen into React. Use
+this workflow's gates and folder conventions when calling them.
 
 ## 1. The design read
 
-Before touching code or setting dials, read the room. Most generated design is bad because the model
-jumps to a default aesthetic instead of reading the brief.
-
-**Signals, in order:**
+Read the brief before setting dials. Signals, in order:
 
 1. **Mode**: what is the visitor there to do? (below)
 2. **Page kind**: landing, pricing, portfolio, editorial, ecommerce, dashboard, editor, settings, docs.
 3. **Vibe words** the user used: "calm", "Linear-style", "Awwwards", "brutalist", "premium", "playful", "serious B2B", "editorial", "dark tech".
 4. **References**: URLs, screenshots, products named, brands competed with.
-5. **Audience**: a procurement panel, a design-conscious consumer, a recruiter scanning. The audience picks the aesthetic, not your taste.
+5. **Audience**: a procurement panel, a design-conscious consumer, a recruiter scanning. The audience picks the aesthetic.
 6. **Brand assets that exist**: logo, colour, type, photography. For an existing surface these are starting material.
 7. **Quiet constraints**: accessibility-first audiences, public sector, regulated industries, trust-first commerce, children. These override aesthetic preference.
 
@@ -72,12 +61,22 @@ persuade; a fashion house's documentation is read.
 - **Read**: the visitor understands something. Docs, articles, guides, help, changelogs. Structure for comprehension, then make the reading worth staying in.
 - **Experience**: the visitor is inside the work itself. Portfolios, galleries, showcases. The artefact leads from the first viewport; the interface recedes.
 
+**Five lenses, posed on every surface in this order:**
+
+1. **Time to dopamine.** How fast does the person get something that rewards them? Front-load the value; the first minute matters most.
+2. **Emulate the best.** The top products borrow each other's proven anatomy: modern but predictable, the way the best phone apps are, never a page shape reinvented for flavour.
+3. **Build a world.** One palette, one plain voice, the same names carried through every screen.
+4. **Cut the fluff.** Anything that is not the core value is a distraction: fewer sections, one action.
+5. **Be opinionated.** Lead with the claims only this product can make.
+
 **State the read in one line before anything else:** "Reading this as: <mode>, <page kind> for
 <audience>, with a <vibe> language, leaning toward <design system or aesthetic family>; dials
 <variance>/<motion>/<density>." Then load the mode's reference.
 
-**Ask only what changes the direction.** Group independent questions into one round; never ask for
-facts available in the project. If the read is confident, declare it and proceed.
+**Ask only what changes the direction**, grouped into one round with a recommendation each, and
+never for facts available in the project. Every question this skill raises (which width case, which
+face, whether to infer a dark mode, which pack, which kind of redesign, which device types) joins
+that round rather than interrupting on its own. If the read is confident, declare it and proceed.
 
 **Anti-default discipline.** The generated-interface defaults are purple gradients, a centred hero
 over a dark mesh, three equal feature cards, glass on everything, infinite micro-animations, Inter
@@ -86,11 +85,10 @@ could not.
 
 ## 2. The three dials
 
-Shorthand for the brief's appetite, stated with the read. The mode is primary; density mostly
-follows from it, and the motion dial expresses appetite only, since `animate` decides what moves.
+Stated with the read. Mode first; density usually follows it.
 
 - **`DESIGN_VARIANCE`** 1 to 10: perfect symmetry to artsy chaos. 1 to 3: symmetrical grid, equal paddings, centred. 4 to 7: offsets, mixed aspect ratios, left-aligned headers over centred data. 8 to 10: masonry, fractional grids, large empty zones.
-- **`MOTION_INTENSITY`** 1 to 10: still to cinematic. Low: hover and press feedback only. High: scroll-driven narrative, in motion.md's shape.
+- **`MOTION_INTENSITY`** 1 to 10: the brief's appetite for motion; `animate` decides what moves. Low: motion only where it carries feedback. High: a scroll narrative is in scope, in motion.md's shape.
 - **`VISUAL_DENSITY`** 1 to 10: airy to cockpit. Low: huge section gaps. High: tight, clearly grouped, tabular numerals where they aid scanning.
 
 | Use case | Variance | Motion | Density |
@@ -106,15 +104,14 @@ follows from it, and the motion dial expresses appetite only, since `animate` de
 | Redesign, preserve | match | match | match |
 | Redesign, overhaul | +2 | +2 | match |
 
-Infer all three from the read and show them; the user overrides them conversationally, with no
-extra gate.
+Infer all three from the read and show them; the user changes them in conversation.
 
 ## 3. Conventions
 
 - **Framework**: preserve the project's. React or Next.js are options for a new project. In Next.js, global state and anything with motion, scroll listeners or pointer physics lives in a client component leaf; server components render static layout only.
-- **Styling**: the project's own system. Where none exists, Tailwind v4 with `@tailwindcss/postcss` or the Vite plugin.
-- **State**: local state for isolated UI; global state only to avoid deep prop drilling. Continuous values driven by input (pointer position, scroll progress) live in motion values, never in React state, which re-renders the tree on every frame.
-- **Icons**: approved brand icons, then the project's existing family; Phosphor, HugeIcons, Radix, Tabler and Lucide are options when none exists. One family, one stroke width, drawn icons; emoji and Unicode glyphs are not an icon system.
+- **Styling**: the project's own system. For a new project, design-systems.md picks the foundation first; where nothing else applies, Tailwind v4 with `@tailwindcss/postcss` or the Vite plugin.
+- **State**: local state for isolated UI; global state only to avoid deep prop drilling.
+- **Icons**: approved brand icons, then the project's existing family; Phosphor, HugeIcons, Radix, Tabler and Lucide are options when none exists. One family, one stroke width, drawn icons.
 - **Emoji**: only when the brief asks for a chat-style or playful voice, and then sparingly.
 - **Layout mechanics**: standard breakpoints (640, 768, 1024, 1280, 1536). `min-h-[100dvh]` for full-height sections, since `h-screen` jumps when a phone's address bar moves. CSS Grid over flex percentage arithmetic. `min-width: 0` on flex and grid children that must shrink below their content.
 - **Dependencies**: check `package.json` before importing anything. If the package is missing, give the install command first.
@@ -132,8 +129,8 @@ page may use a page container. When it is unclear which case applies, ask. `over
 ### Typography
 
 - **Brand fonts always win.** With no brand, suggest a face with a reason and ask.
-- **Guidance on what to reach for**: Geist, Cabinet Grotesk, Satoshi and Söhne for a modern sans; for a serif that fits an editorial or heritage brief, Tiempos, GT Sectra, Canela, Domaine, EB Garamond or Cormorant Garamond, named for this brand. Operate and read surfaces may use a familiar sans, including Inter or the system stack, without apology.
-- **Rules on what not to default to**: a face reached for because it is everywhere means you stopped looking. The reflexes: Fraunces, Playfair Display, Cormorant, Lora, Crimson, Newsreader, Syne, Space Grotesk, Space Mono, IBM Plex, Inter as display type, DM Sans, DM Serif, Outfit, Plus Jakarta Sans, Instrument Sans and Instrument Serif. A serif because "it feels creative" is the most tested tell there is; a serif is chosen only when the brand names one or the brief is genuinely editorial, luxury or heritage and you can say why this serif fits this brand.
+- **Guidance on what to reach for**: Geist, Cabinet Grotesk, Satoshi and Söhne for a modern sans; for a serif that fits an editorial or heritage brief, Tiempos, GT Sectra, Canela, Domaine or EB Garamond, named for this brand. Operate and read surfaces may use a familiar sans, including Inter or the system stack.
+- **Rules on what not to default to**: Fraunces, Playfair Display, Cormorant, Lora, Crimson, Newsreader, Syne, Space Grotesk, Space Mono, IBM Plex, Inter as display type, DM Sans, DM Serif, Outfit, Plus Jakarta Sans, Instrument Sans and Instrument Serif. Choose a serif only when the brand names one, or the brief is editorial, luxury or heritage and you can say why this serif fits this brand.
 - **Emphasis inside a headline** is italic or bold of the same family.
 - **Display type**: tracking floor -0.04em, balanced headings, obvious steps of scale and weight. Italic display type with descenders needs line height of at least 1.1 and a little reserve below, or the descender clips.
 - **Body**: 16px is the ordinary floor; line height tuned to measure; prose stays readable and zoomable; numerals tabular where they align data.
@@ -150,23 +147,23 @@ page may use a page container. When it is unclear which case applies, ask. `over
 
 Light by default. When the brand guidelines carry a dark mode, build it to them. When they carry
 none, offer to infer a dark theme as a switcher and ask; when the brand is dark, offer light and
-ask. Test every supported mode before finishing. Theme through the project's mechanism: the `dark:`
-variant in utility projects, semantic CSS variables swapped under a theme attribute otherwise.
-Hierarchy that works in one mode works in the other, and the brand colour stays recognisable in both.
+ask. Theme through the project's mechanism: the `dark:` variant in utility projects, semantic CSS
+variables swapped under a theme attribute otherwise. Hierarchy that works in one mode works in the
+other, and the brand colour stays recognisable in both.
 
 ### Materiality and shape
 
-- Cards only when elevation communicates real hierarchy; otherwise group with a top border, dividers or space. Cards are the lazy container; nested cards are always wrong.
-- Declare elevation once, border or shadow. A shadow carries an offset and a soft blur, tinted to the background hue. A 1px border under a wide soft shadow is the ghost card.
+- Cards only when elevation communicates real hierarchy; otherwise group with a top border, dividers or space. Never nest cards outside a named visual language (styles.md).
+- Declare elevation once, border or shadow, never a 1px border under a wide soft shadow. A shadow carries an offset and a soft blur, tinted to the background hue.
 - One corner-radius system per page: all sharp, all soft, or all pill, or a documented rule ("buttons pill, cards 16px, inputs 8px") applied everywhere.
 - Glass and blur are a specific effect with a solid fallback under `prefers-reduced-transparency`.
 
 ### States, forms, copy
 
-- Every interactive component ships with default, hover, focus, active, disabled, loading, error and empty. Skeletons matching the layout for loading. Empty states that say what will be here, why it matters and how to start.
-- Button text readable against its background; primary labels fit on one line at desktop; one label per intent on a page.
+- Every interactive component ships with default, hover, focus, active, disabled, loading, error and empty.
+- Button text readable against its background.
 - Forms: label above input, placeholders are examples, helper text present, error text below, format and eligibility requirements before submission, validation that says what to fix without blame.
-- Copy: controls name their action; errors name the problem and the recovery; helper text answers an implicit question rather than restating the control. Re-read every visible string before delivery and revise authored copy with the writing skill. Numbers are real, or labelled synthetic.
+- Copy: controls name their action; errors name the problem and the recovery; helper text answers an implicit question rather than restating the control. Re-read every visible string before delivery. Numbers are real, or labelled synthetic.
 - One copy register per page unless the brand voice calls for more.
 
 ### Assets
@@ -180,9 +177,9 @@ or a tool may need no images at all. Images reserve their layout space; off-scre
 
 Verified before anything ships, with the real copy at every breakpoint:
 
-- **Contrast** as above. **Depth** declared once. **Spacing**: tight groups, generous separation, more space above a heading than below it, on a documented scale with a 4-unit base; read the computed values.
-- **Type** as above; run the real copy and fix what overflows.
-- **Motion**: one authored moment, and never the same entrance on every section. Every animation respects `prefers-reduced-motion` by becoming fewer and gentler, keeping the opacity and colour changes that show state. Animate `transform` and `opacity`; `top`, `left`, `width`, `height`, `margin` and `padding` relayout every frame.
+- **Depth** declared once. **Spacing**: tight groups, generous separation, more space above a heading than below it, on a documented scale with a 4-unit base; read the computed values.
+- **Type**: run the real copy and fix what overflows.
+- **Motion**: one authored moment, built by `animate`.
 - **States**: all of them present, with real content and working controls.
 - **Browser surfaces**: text selection, the caret, scrollbars, focus rings, underline offset and tabular numerals all ship with browser defaults; theme them from the palette.
 - **Copy**: the product's own language, in the reader's words.
@@ -190,25 +187,17 @@ Verified before anything ships, with the real copy at every breakpoint:
 - **Performance**: LCP under 2.5s, INP under 200ms, CLS under 0.1; grain and noise filters only on fixed, pointer-transparent pseudo-elements; lazy-load below the fold; z-index from the project's scale.
 - **Keyboard**: visible focus, logical order, accessible names, dialogs that trap and return focus.
 
-The floor holds the mechanics; it never picks the direction. With every check green, spend the page
-on the committed direction.
-
 ## 6. Tells
 
-The signatures a generated interface leaves. Each is a default reached for without deciding; reaching
-for one means rewriting the element, and only a brief's own words earn any of them back.
+Rewrite any element that uses one of these; only a brief's own words earn one back, and the one
+item no brief earns back is a kicker or eyebrow above a heading.
 
 - Neon or outer glows; oversaturated accents; gradient text on large headings; custom cursors.
 - Oversized headlines that shout instead of controlling hierarchy with weight and colour.
-- Three equal feature cards; the hero-metric template (big number, small label, supporting stats, accent); a kicker or eyebrow above a heading, which no brief earns back.
+- Three equal feature cards; the hero-metric template (big number, small label, supporting stats, accent).
 - Section numbers (01 / 02 / 03) unless the sequence carries information; "LABEL // YEAR" formatting; a coloured left or right border above 1px on cards, list items, callouts or alerts; hard offset shadows outside a genuinely neobrutalist world.
-- Nested boxes, a card inside a card inside a panel; and micro-UI clutter, dots, pills, tags and badges scattered to look busy.
+- Micro-UI clutter: dots, pills, tags and badges scattered to look busy; a coloured status dot that carries no state.
 - Sparklines, progress rings and soft-shadowed rectangles standing in for content; monospace as a costume for "technical" rather than for code, data or measurement.
 - Generic names ("John Doe"), egg avatars, startup-slop brand names ("Acme", "Nexus"), filler verbs ("Elevate", "Seamless", "Unleash"), and a placeholder image service in a deliverable.
 - Div-built fake screenshots of a product; hand-rolled decorative SVG illustrations; a component library shipped in its default state.
 - A modal for a task that needs neither interruption nor protected focus.
-
-## 7. Scope
-
-Every website and web application, including dashboards, tables, multi-step forms and embedded
-editors, and the phone surface that renders the same product. This skill governs presentation.

@@ -1,13 +1,11 @@
 # Visual languages
 
-Read when the brief names a language. A preset is picked only because the brief names it or the
-design read lands on it with a reason; none is a default. Each maps to the words Stitch's redesign
-engine and variant prompts understand, so a chosen language can be named in a Stitch brief as is.
+Read when the brief names a language, or the design read lands on one with a reason. Name a chosen
+language in the Stitch brief using the words below.
 
 ## Stitch's style vocabulary
 
-Use these words in Stitch prompts and design-system documents; they are the terms its engines act
-on. Combine one from each group that applies.
+The terms Stitch's engines act on. Combine one from each group that applies.
 
 - **Layout and structure**: bento grid (modular, boxy, card compartments), editorial (magazine feel, large serif headings, generous space, asymmetric images), Swiss (grid systems, sans-serif, flush-left), split-screen (a solid colour block paired with full-bleed imagery).
 - **Texture and depth**: glassmorphism (translucency, backdrop blur, subtle white borders), claymorphism (soft inflated shapes with inner shadows), skeuomorphic (realistic textures and physical controls), grainy (film grain over gradients to reduce digital shine).
@@ -18,7 +16,7 @@ on. Combine one from each group that applies.
 
 Polished, calm, expensive. Stitch words: editorial or split-screen, glassmorphism, monochromatic.
 
-- **Nested enclosures.** A premium card, image or container never sits flat on the background. An outer shell with a faint tint (`bg-black/5` or `bg-white/5`), a hairline ring, a little padding and a large radius; an inner core with its own surface, an inner highlight (`shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]`) and a radius calculated smaller so the curves stay concentric (`rounded-[calc(2rem-0.375rem)]`).
+- **Nested enclosures.** Here, and only here, a container inside a container is the language itself. A premium card, image or container never sits flat on the background. An outer shell with a faint tint (`bg-black/5` or `bg-white/5`), a hairline ring, a little padding and a large radius; an inner core with its own surface, an inner highlight (`shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]`) and a radius calculated smaller so the curves stay concentric (`rounded-[calc(2rem-0.375rem)]`).
 - **Pill buttons** with generous padding. A trailing arrow sits inside its own small circular wrapper flush with the button's right padding, never naked beside the text.
 - **Macro whitespace**: section padding doubled (`py-24` to `py-40`).
 - **Floating island navigation**: a glass pill detached from the top (`mt-6 mx-auto w-max rounded-full`), a hamburger whose lines rotate into an X, a menu that opens as a full-screen glass overlay with links staggering up from below.
@@ -27,7 +25,7 @@ Polished, calm, expensive. Stitch words: editorial or split-screen, glassmorphis
 ## Minimalist
 
 Document-style product UI in the Notion and Linear family. Stitch words: Swiss or editorial,
-monochromatic. The natural default for read surfaces when a brief asks for calm.
+monochromatic.
 
 - **Type**: a clean geometric or system-native sans for body, UI and buttons; a serif for hero headings and quotes only where the brand or brief earns one, tightly tracked (-0.02em to -0.04em) at line height 1.1; a mono for code, keystrokes and metadata. Body in off-black (`#111111` or `#2F3437`) at line height 1.6; secondary text in muted grey (`#787774`).
 - **Palette**: warm monochrome. Canvas `#FFFFFF` or warm bone (`#F7F6F3`, `#FBFBFA`); card surfaces `#FFFFFF` or `#F9F9F8`; structural borders `#EAEAEA` or `rgba(0,0,0,0.06)`; accents only as washed-out pastels for tags, inline code and icon backgrounds: pale red `#FDEBEC` on `#9F2F2D`, pale blue `#E1F3FE` on `#1F6C9F`, pale green `#EDF3EC` on `#346538`, pale yellow `#FBF3DB` on `#956400`.
@@ -41,7 +39,7 @@ grainy, duotone or OLED dark.
 
 - **Swiss industrial print (light)**: matte paper backgrounds (`#F4F4F0`, `#EAE8E3`), carbon ink (`#050505` to `#111111`), one accent, hazard red (`#E61919` or `#FF2A2A`), for strike-throughs, thick dividing rules and vital highlights.
 - **Tactical telemetry (dark)**: deactivated-CRT backgrounds (`#0A0A0A`, `#121212`), white phosphor text (`#EAEAEA`), the same red on the same rules, and terminal green (`#4AF626`) for at most one element with a purpose.
-- **Type**: structural headers in a heavy neo-grotesque (Neue Haas Grotesk Black, Inter Black, Archivo Black, Roboto Flex heavy, Monument Extended) at fluid scale (`clamp(4rem, 10vw, 15rem)`), tracking -0.03em to -0.06em, leading 0.85 to 0.95, uppercase. Data and telemetry in a mono (JetBrains Mono, IBM Plex Mono, Space Mono, VT323, Courier Prime) at 10 to 14px, tracking 0.05em to 0.1em, uppercase. A high-contrast serif only as a rare textural disruption, degraded with halftone or dithering.
+- **Type**: structural headers in a heavy neo-grotesque (Neue Haas Grotesk Black, Archivo Black, Roboto Flex heavy, Monument Extended) at fluid scale (`clamp(4rem, 10vw, 15rem)`), tracking -0.03em to -0.06em, leading 0.85 to 0.95, uppercase. Data and telemetry in a mono (JetBrains Mono, IBM Plex Mono, Space Mono, VT323, Courier Prime) at 10 to 14px, tracking 0.05em to 0.1em, uppercase. A high-contrast serif only as a rare textural disruption, degraded with halftone or dithering.
 - **Layout**: a strict grid with elements anchored to tracks; visible compartments by 1px or 2px solid borders and full-width rules; density that oscillates between packed mono metadata and vast negative space around macro type; no radius anywhere. `display: grid; gap: 1px` with contrasting parent and child backgrounds draws razor-thin dividers without border declarations.
 - **Symbology**: ASCII framing (`[ DELIVERY SYSTEMS ]`, `>>>`, `///`), registration and copyright marks as geometric elements, crosshairs at grid intersections, barcode stripes, warning stripes. Here, and only here, the crosshair grid lines and uppercase metadata that the tells list names are the language itself.
 - **Texture**: halftone and 1-bit dithering on images and serif type; CRT scanlines by `repeating-linear-gradient` on dark backgrounds; a global low-opacity noise filter on a fixed pointer-transparent layer.
