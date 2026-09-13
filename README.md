@@ -54,6 +54,10 @@ claude mcp add stitch --transport http https://stitch.googleapis.com/mcp --heade
 
 The same key goes in `.env` for the upload script. Nothing here stores it anywhere else.
 
+A Stitch generation takes minutes and the MCP client gives up at about 150 seconds, so set
+`MCP_TOOL_TIMEOUT=600000` in Claude Code's environment (the `env` block of `settings.json`) before
+using the Stitch route.
+
 ## The detector
 
 The hooks run Impeccable's detector (npm `impeccable`, pinned in `package.json`) on every Edit or

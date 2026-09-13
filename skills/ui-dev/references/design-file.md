@@ -95,8 +95,8 @@ A calm, professional interface for a healthcare scheduling platform. Sources: da
 
 ## Keeping it honest
 
-- `npx @google/design.md lint DESIGN.md` runs eight rules: a broken token reference (error), no `primary` colour, a component whose text and background fall below 4.5:1, colour tokens no component uses, colours without any typography, sections out of order, missing optional sections, and a token count. Run it whenever the file changes; exit code 1 means an error.
-- `npx @google/design.md diff before.md after.md` reports tokens added, removed and changed and flags a regression.
-- `npx @google/design.md export --format tailwind DESIGN.md` emits a `theme.extend` object; `--format dtcg` emits W3C design tokens for a project that styles through CSS variables.
+- `npx -p @google/design.md designmd lint DESIGN.md` runs eight rules: a broken token reference (error), no `primary` colour, a component whose text and background fall below 4.5:1, colour tokens no component uses, colours without any typography, sections out of order, missing optional sections, and a token count. Run it whenever the file changes; exit code 1 means an error. The shorter `npx @google/design.md lint` form prints nothing on Windows.
+- `npx -p @google/design.md designmd diff before.md after.md` reports tokens added, removed and changed and flags a regression.
+- `npx -p @google/design.md designmd export --format tailwind DESIGN.md` emits a `theme.extend` object; `--format dtcg` emits W3C design tokens for a project that styles through CSS variables.
 - The detector's four design-system rules fire only on values declared in the front matter, so an undeclared colour, font, size or radius in the CSS is reported against this file. A prose-only DESIGN.md is invisible to it.
 - The detector keeps a sidecar at `.impeccable/design.json` holding what the eight-property component schema cannot (shadows, motion, breakpoints, tonal ramps, full component CSS). Keep it at least `{"schemaVersion": 2, "extensions": {}}` and touch it after every DESIGN.md edit, or the detector notes the file is newer than its sidecar on every session. `impeccable doctor --json` reports drift between them.

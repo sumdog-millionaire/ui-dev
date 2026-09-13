@@ -23,8 +23,8 @@ exception commands a finding names (`hooks ignore-value`, `hooks ignore-rule`, `
 
 ## The design file
 
-`npx @google/design.md lint DESIGN.md` after any change to it; `diff` against the previous version
-when a direction changes. An error is a blocker.
+`npx -p @google/design.md designmd lint DESIGN.md` after any change to it; `diff` against the
+previous version when a direction changes. An error is a blocker.
 
 ## Browser evidence
 
