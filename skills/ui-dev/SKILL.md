@@ -37,10 +37,11 @@ motion.
 conventions taking precedence over its default register. Supplied facts, quotations and protected
 text are preserved.
 
-**Companions**, called by name when they are installed and named as missing when they are not: `extract-static-html` captures a running
-screen as one HTML file, `upload-to-stitch` posts images and HTML to Stitch, `extract-design-md`
-reads a DESIGN.md out of existing source, `react-components` turns a Stitch screen into React. Use
-this workflow's gates and folder conventions when calling them.
+**Companions** in this plugin: `extract-static-html` captures a running screen as one HTML file,
+`upload-to-stitch` posts images and HTML to Stitch, `extract-design-md` reads a DESIGN.md out of
+existing source, `react-components` turns a Stitch screen into React. When calling them, this
+workflow's two gates are the only approval points, and the project's DESIGN.md is the one at the
+repo root wherever a companion names `.stitch/DESIGN.md`.
 
 ## 1. The design read
 
@@ -130,7 +131,7 @@ page may use a page container. When it is unclear which case applies, ask. `over
 ### Typography
 
 - **Brand fonts always win**, and a project with a design file has already chosen. With neither, suggest a face with a reason and ask.
-- **Guidance on what to reach for**: Cabinet Grotesk, Satoshi, Söhne or Schibsted Grotesk for a modern sans; for a serif that fits an editorial or heritage brief, Tiempos, GT Sectra, Canela, Domaine or EB Garamond, named for this brand. Operate and read surfaces may use a familiar sans, including the system stack. The detector reports Inter and Geist as overused; a brand that names one records the exception.
+- **Guidance on what to reach for**: Cabinet Grotesk, Satoshi, Söhne or Schibsted Grotesk for a modern sans; for a serif that fits an editorial or heritage brief, Tiempos, GT Sectra, Canela, Domaine or EB Garamond, named for this brand. Operate and read surfaces may use a familiar sans, including the system stack. The detector reports Inter and Geist as overused; when a brand names one, or an operate or read surface chose one on purpose, record the exception with that reason.
 - **Rules on what not to default to**: Fraunces, Playfair Display, Cormorant, Lora, Crimson, Newsreader, Syne, Space Grotesk, Space Mono, IBM Plex, Inter as display type, DM Sans, DM Serif, Outfit, Plus Jakarta Sans, Instrument Sans and Instrument Serif. Choose a serif only when the brand names one, or the brief is editorial, luxury or heritage and you can say why this serif fits this brand.
 - **Emphasis inside a headline** is italic or bold of the same family.
 - **Display type**: tracking floor -0.04em, balanced headings, obvious steps of scale and weight. Italic display type with descenders needs line height of at least 1.1 and a little reserve below, or the descender clips.
@@ -181,7 +182,6 @@ Verified before anything ships, with the real copy at every breakpoint:
 
 - **Depth** declared once. **Spacing**: tight groups, generous separation, more space above a heading than below it, on a documented scale with a 4-unit base; read the computed values.
 - **Type**: run the real copy and fix what overflows.
-- **Motion**: one authored moment, built by `animate`.
 - **States**: all of them present, with real content and working controls.
 - **Browser surfaces**: text selection, the caret, scrollbars, focus rings, underline offset and tabular numerals all ship with browser defaults; theme them from the palette.
 - **Copy**: the product's own language, in the reader's words.
@@ -196,8 +196,8 @@ item no brief earns back is a kicker or eyebrow above a heading.
 
 - Neon or outer glows; oversaturated accents; gradient text on large headings; custom cursors.
 - Oversized headlines that shout instead of controlling hierarchy with weight and colour.
-- Three equal feature cards; the hero-metric template (big number, small label, supporting stats, accent).
-- Section numbers (01 / 02 / 03) unless the sequence carries information; "LABEL // YEAR" formatting; a coloured left or right border above 1px on cards, list items, callouts or alerts; hard offset shadows outside a genuinely neobrutalist world.
+- Three equal feature cards; the hero-metric template (big number, small label, supporting stats, accent) as a page's story, where an operate surface's row of real figures is data and fine.
+- Section numbers (01 / 02 / 03) unless the sequence carries information; "LABEL // YEAR" formatting; a coloured left or right border above 1px on cards, list items or callouts, unless the colour carries state such as an alert's severity; hard offset shadows outside a genuinely neobrutalist world.
 - Micro-UI clutter: dots, pills, tags and badges scattered to look busy; a coloured status dot that carries no state.
 - Sparklines, progress rings and soft-shadowed rectangles standing in for content; monospace as a costume for "technical" rather than for code, data or measurement.
 - Generic names ("John Doe"), egg avatars, startup-slop brand names ("Acme", "Nexus"), filler verbs ("Elevate", "Seamless", "Unleash"), and a placeholder image service in a deliverable.

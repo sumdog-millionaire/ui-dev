@@ -1,6 +1,6 @@
 # Visual languages
 
-Read when the brief names a language, or the design read lands on one with a reason. Name a chosen
+Read when the brief names a language. Name a chosen
 language in the Stitch brief using the words below.
 
 ## Stitch's style vocabulary

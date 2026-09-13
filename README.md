@@ -15,6 +15,7 @@ Edit, commit and push here. A second machine clones it to the same path.
 |---|---|
 | `skills/ui-dev/` | the design skill: a short body that reads the brief and picks a mode, plus references loaded on demand |
 | `skills/animate`, `animate-expo`, `review-animations`, `improve-animations`, `pick-ui-library`, `prototype`, `apple-design`, `write-swift` | Emil Kowalski's skills, vendored; `ui-dev` hands all interface motion to `animate` |
+| `skills/extract-static-html`, `upload-to-stitch`, `extract-design-md`, `react-components` | four of Google's Stitch skills, vendored: capture a running screen as one HTML file, post images and HTML to Stitch over REST, read a DESIGN.md out of existing source, turn a Stitch screen into React |
 | `skills/upstream-review/` | the maintenance skill: walks `upstream.json`, diffs each source since the reviewed commit, proposes adopt, adapt or skip |
 | `hooks/`, `scripts/` | the Impeccable detector adapter: a PostToolUse check after every Edit or Write, a deeper pass at the end of a turn |
 | `extensions/` | the same adapter for Pi |
@@ -38,11 +39,6 @@ and `/ui-dev:upstream-review` runs the maintenance pass.
 
 - **grilling** (Matt Pocock's plugin): resolves the design decisions for a new direction.
 - **anti-ai-slop-writing** (`~/.claude/skills`): the writing standard for anything a person reads.
-- Four of Google's Stitch skills, copied into `~/.claude/skills/` from
-  `google-labs-code/stitch-skills`: `extract-static-html` (capture a running screen as one HTML file),
-  `upload-to-stitch` (post images and HTML to Stitch over REST), `extract-design-md` (read a
-  DESIGN.md out of existing source), `react-components` (turn a Stitch screen into React). Their
-  own confirmation gates and folder conventions do not apply; `ui-dev`'s do.
 
 ### Stitch
 

@@ -35,13 +35,22 @@ Then wait for the user's choices. A request to review is not permission to apply
 
 Apply each chosen change to our copy by hand, comparing three things: the reviewed upstream version,
 the new upstream version, and ours. Keep every local edit that the change does not deliberately
-replace, and replace any em dash the upstream text brings in. For text that was lifted rather than
-vendored, rewrite the passage in the voice of the file it lives in.
+replace. For text that was lifted rather than vendored, rewrite the passage in the voice of the file
+it lives in.
+
+Then strip em dashes. List every one from the plugin root:
+
+```bash
+git grep -nP '\x{2014}' -- '*.md'
+```
+
+Replace each by hand with what the sentence needs, usually a comma, colon, full stop or brackets, and
+a spaced hyphen where a dash really is the right mark. Run the command again; it must print nothing.
 
 ## 4. Check, then record
 
 Run the plugin's checks before recording anything: `claude plugin validate . --strict` from the
-plugin root, a search for em dashes across `skills/`, and a read of every description that changed,
+plugin root, the em dash command above printing nothing, and a read of every description that changed,
 to confirm no two skills now trigger on the same phrase. If a check fails, fix it or leave the
 entry's `reviewedCommit` where it was and say the review is incomplete.
 

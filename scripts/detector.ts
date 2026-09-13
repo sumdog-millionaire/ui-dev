@@ -67,5 +67,8 @@ export async function runDetector(event: HookEvent): Promise<string> {
   const result = JSON.parse(stdout) as { hookSpecificOutput?: { additionalContext?: unknown } };
   const context = result.hookSpecificOutput?.additionalContext;
   assert(typeof context === "string", "ui-dev: unexpected detector response; check not completed");
-  return context;
+  // The engine names its own slash commands, which do not exist here; point at what does.
+  return context
+    .replaceAll("/impeccable hooks", `"${self}" hooks`)
+    .replaceAll("/impeccable document", "the ui-dev skill's references/design-file.md");
 }

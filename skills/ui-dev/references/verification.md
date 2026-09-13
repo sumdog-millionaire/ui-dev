@@ -50,7 +50,7 @@ stay visible.
 - Brand rules, source content, the width route and approved exceptions were honoured.
 - Authored copy went through the writing skill; supplied facts, quotations and protected text are unchanged; every visible string was re-read.
 - One corner-radius system; elevation declared once; button and form contrast pass; primary labels on one line; one label per intent.
-- Fonts suit the brand or were chosen with a stated reason; loaded fonts match the rendering; licences permit use.
+- Fonts suit the brand or were chosen with a stated reason; loaded fonts are the design file's, never a Stitch render's stand-in; licences permit use.
 - Every interactive component has its full set of states; empty, loading and error are designed.
 - Motion: one authored moment; every animation justified in one sentence; `animate`'s rules met; scroll storytelling built to motion.md's skeletons where used.
 - The mode file's tells and triage order, where it carries them.

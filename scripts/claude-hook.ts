@@ -18,8 +18,8 @@ try {
 } catch (error) {
   const text = `ui-dev: automatic design check was not completed. ${error instanceof Error ? error.message : String(error)}`;
   if (event?.hook_event_name === "Stop") {
-    // A broken engine reports itself once and lets the turn end; blocking here would loop on the fault.
-    process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: "Stop", additionalContext: text } }));
+    // A broken engine tells the user and lets the turn end; blocking here would loop on the fault.
+    process.stdout.write(JSON.stringify({ systemMessage: text }));
   } else if (event?.hook_event_name === "PostToolUse") {
     process.stdout.write(JSON.stringify({
       hookSpecificOutput: { hookEventName: "PostToolUse", additionalContext: text },

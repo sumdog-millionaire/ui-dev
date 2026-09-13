@@ -13,7 +13,7 @@ stay uninventable: prices, customers, benchmarks, capabilities the product does 
 - The hero carries the purpose and the next action, findable at once. A compact hero often fits the first viewport; an approved scroll narrative may span several.
 - Plan font size and image size together. Most heroes sit at `text-4xl md:text-5xl lg:text-6xl`; the largest sizes only when the headline is three to five words. A four-line headline is a font-size error.
 - Hero top padding stops at about 6rem at desktop; more, and the content floats halfway down the viewport. Breathing room comes from type scale or asset size.
-- At most four text elements in a hero: one small element (a brand strip, or nothing), the headline (two lines), the subtext (about twenty words), the calls to action (one primary, at most one secondary). Taglines under the buttons, trust strips, pricing teasers, feature bullets and avatar rows move to their own sections below.
+- At most four text elements in a hero: one small element (the brand's mark or a row of client logos, never a label over the headline, or nothing), the headline (two lines), the subtext (about twenty words), the calls to action (one primary, at most one secondary). Taglines under the buttons, trust strips, pricing teasers, feature bullets and avatar rows move to their own sections below.
 - A logo wall sits under the hero as its own section, never inside it.
 - A centred hero belongs to editorial, manifesto and launch briefs where the message is the design; above design variance 4, prefer a split, a left-aligned composition with the asset opposite, asymmetric space, or a pinned structure.
 - Strong typography can carry a hero without an image; a gradient blob is not a composition.

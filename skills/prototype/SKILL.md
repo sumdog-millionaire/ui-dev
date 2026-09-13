@@ -1,6 +1,6 @@
 ---
 name: prototype
-description: Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Use when the open question is how an interaction feels; composition is rendered in Stitch.
+description: Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Runs only when the user types it, for when the open question is how an interaction feels; composition is rendered in Stitch.
 disable-model-invocation: true
 ---
 

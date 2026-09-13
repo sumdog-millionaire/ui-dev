@@ -23,7 +23,11 @@
       "./skills/pick-ui-library",
       "./skills/prototype",
       "./skills/apple-design",
-      "./skills/write-swift"
+      "./skills/write-swift",
+      "./skills/extract-design-md",
+      "./skills/extract-static-html",
+      "./skills/react-components",
+      "./skills/upload-to-stitch"
     ],
     "extensions": [
       "./extensions/impeccable.ts"
