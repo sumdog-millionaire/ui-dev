@@ -5,7 +5,7 @@
 - **Brand pack**: the client's identity as they gave it, in `data/brand/<slug>/` in the working repo: BRAND.md, TONE-OF-VOICE.md, ASSET-INDEX.md, sources and assets (brands.md).
 - **Design file**: the project's `DESIGN.md` at the repo root, tokens and rationale in the open spec, derived from the pack and evolving with the built world (design-file.md).
 - **Direction**: the project-specific composition, typography, palette, hierarchy and interaction intent for a surface. It fills gaps the brand leaves without becoming a brand rule.
-- **Approved package**: the chosen Stitch screens (desktop and mobile), a motion storyboard where narrative motion is in scope, and the design file updated to match. These are authoritative for the build whatever tool produced them.
+- **Approved package**: the chosen Stitch screens, one per device type the surface needs, a motion storyboard where narrative motion is in scope, and the design file updated to match. These are authoritative for the build whatever tool produced them.
 
 ## How the user and the agent work together
 
@@ -52,8 +52,8 @@ build.
 The default route is user-led: the agent hands over the Stitch project with the brief and the first
 pass in it, the user iterates in Stitch until they love it, and the agent then lists the screens,
 asks which won, and fetches exactly those. When the user says "just do it", the agent iterates
-through the MCP instead. Either way the outcome is a desktop and a mobile rendering of equal
-standing, a motion storyboard where narrative motion is in scope (motion.md), and the design file
+through the MCP instead. Either way the outcome is a rendering per device type the surface needs, asked
+in discover and never assumed, each of equal standing, a motion storyboard where narrative motion is in scope (motion.md), and the design file
 updated with the resolved tokens, the supported themes, the responsive rules and the open
 limitations. Offer Stitch's prototype view for checking hover states and input sizing before build;
 a disposable runnable prototype (the `prototype` skill) only when the open question is how an

@@ -23,7 +23,7 @@ location as `path/to/file.tsx:123` and include the current code verbatim:
 
 ## Target
 
-The exact end state. Every value spelled out — curves, durations, spring
+The exact end state. Every value spelled out: curves, durations, spring
 configs, media queries. Never "use a nicer easing":
 
 ​```css
@@ -50,13 +50,13 @@ imitate (token names, file placement, prop patterns):
 ## Boundaries
 
 - Do NOT touch <files/components out of scope>.
-- Do NOT change markup/structure — motion properties only (unless a step says otherwise).
+- Do NOT change markup/structure: motion properties only (unless a step says otherwise).
 - Do NOT add new dependencies.
 - If a step doesn't match the code you find (drift since the commit stamp), STOP and report instead of improvising.
 
 ## Verification
 
-- **Mechanical**: <exact commands — typecheck, lint, build — with expected outcome>.
+- **Mechanical**: <exact commands (typecheck, lint, build) with expected outcome>.
 - **Feel check**: run the UI, trigger <interaction>, and confirm:
   - <observable check, e.g. "the dropdown scales from its trigger, not from center">
   - <e.g. "spamming the toggle never restarts the animation from zero">

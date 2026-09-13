@@ -169,9 +169,9 @@ export function RevealStagger({ items }: { items: string[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{
-            duration: 0.6,
-            delay: i * 0.06,
-            ease: [0.16, 1, 0.3, 1],
+            duration: 0.3,
+            delay: i * 0.06,                 // stagger and curve are animate's values
+            ease: [0.23, 1, 0.32, 1],
           }}
         >
           {item}
@@ -182,14 +182,11 @@ export function RevealStagger({ items }: { items: string[] }) {
 }
 ```
 
-Use this for: feature lists, testimonial grids, logo walls, anything that just needs "enter on scroll." Save GSAP for actual pin/scrub work.
+Use this for feature lists, testimonial grids, logo walls, anything that only needs to enter on scroll; GSAP is for pin and scrub work. The duration, stagger and curve come from `animate`.
 
 
 ## Scroll mechanics
 
-* **`window.addEventListener("scroll", ...)`** is banned. It runs on every scroll frame, jank-prone, no batching. Use Motion's `useScroll()`, GSAP's `ScrollTrigger`, IntersectionObserver, or CSS `scroll-driven animations` (`animation-timeline: view()`).
-* **Custom scroll progress calculations using `window.scrollY`** in React state. Same reason. Re-renders on every frame.
-* **`requestAnimationFrame` loops that touch React state.** Use motion values (`useMotionValue` + `useTransform`) instead.
-* **Layout Transitions:** Use Motion's `layout` and `layoutId` props for visible state changes (re-ordering lists, expanding modals, shared elements between routes). Do not wrap static content in `layout` props "for safety" - it costs measurement work.
-* **Staggered Orchestration:** Use `staggerChildren` (Motion) or CSS cascade (`animation-delay: calc(var(--index) * 100ms)`) for reveal moments where sequence matters. For `staggerChildren`, parent (`variants`) and children MUST share the same Client Component tree.
+- A scroll listener on `window` runs on every frame with no batching; scroll progress lives in Motion's `useScroll()`, GSAP's `ScrollTrigger`, an IntersectionObserver, or CSS scroll-driven animations (`animation-timeline: view()`).
+- Scroll progress and pointer position never live in React state, which re-renders the tree on every frame; they live in motion values (`useMotionValue`, `useTransform`), and a `requestAnimationFrame` loop never writes state either.
 

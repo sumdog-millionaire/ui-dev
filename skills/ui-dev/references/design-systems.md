@@ -24,10 +24,6 @@ With the design read and dials stated, pick the foundation. Things that have an 
 | Modern SaaS where you own the components | shadcn/ui (`npx shadcn@latest add ...`) | You own the code, easy to customise; never ship default state |
 | Tailwind-based modern SaaS / AI marketing | Tailwind v4 utilities + `dark:` variant | Default for indie + small team builds |
 
-**Honesty rule:** when the project actually requires a named design system, use its official implementation rather than claiming a hand-built imitation is official. A visual resemblance alone does not justify installing it. Reuse the existing stack and dependencies first.
-
-**One system per project.** Do not mix Fluent React with Carbon in the same tree. Do not import shadcn/ui components into a Material 3 app.
-
 ### An aesthetic, not a system
 For these directions, there is **no single official package**. Build with native CSS + Tailwind + a maintained component library. Be honest in code comments about what is borrowed inspiration vs. official material.
 
@@ -42,12 +38,12 @@ For these directions, there is **no single official package**. Build with native
 | Kinetic typography | Native CSS animations, scroll-driven animations, GSAP for hijacks. No library. |
 | **Apple Liquid Glass** | Apple documents this for Apple platforms only. **There is no official `liquid-glass.css`.** Web implementations are approximations using `backdrop-filter` + layered borders + highlights. Label clearly as approximation. |
 
-# Install commands, canonical sources and starters
+## Install commands, canonical sources and starters
 
-Real install commands, canonical documentation links and working starters for each system above,
-so a decision is grounded in the package as it is rather than as remembered.
+Real install commands, documentation links and working starters for each system above, so a
+decision is grounded in the package as it is rather than as remembered.
 
-## Install commands
+### Install commands
 
 ```bash
 # Material Web (Material 3)
