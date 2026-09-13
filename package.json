@@ -2,7 +2,7 @@
   "name": "ui-dev",
   "version": "0.1.0",
   "private": true,
-  "description": "Brand-aware Taste workflow for Claude Code and Pi, with quiet design checks.",
+  "description": "Design and build interfaces from brief to verified build: one design skill that picks the visitor's mode, Emil Kowalski's motion skills, Google Stitch over MCP, and the Impeccable detector after every edit.",
   "type": "module",
   "keywords": [
     "pi-package",
@@ -15,7 +15,15 @@
   "pi": {
     "skills": [
       "./skills/ui-dev",
-      "./skills/anti-ai-slop-writing"
+      "./skills/upstream-review",
+      "./skills/animate",
+      "./skills/animate-expo",
+      "./skills/review-animations",
+      "./skills/improve-animations",
+      "./skills/pick-ui-library",
+      "./skills/prototype",
+      "./skills/apple-design",
+      "./skills/write-swift"
     ],
     "extensions": [
       "./extensions/impeccable.ts"
