@@ -28,7 +28,7 @@ preserve its routes, behaviour, data and accessibility unless the request change
 
 Resolve the brand with brands.md. If no pack exists, ask what the user wants: onboard a brand into a
 pack, or proceed without one. State the design read with its mode and dials and load the mode's
-reference. Ask which device types the surface needs. For a new or materially revised direction,
+reference. Ask which device types the surface needs when more than one is plausible. For a new or materially revised direction,
 invoke `grilling` with the brief, the findings, the brand constraints and the open decisions, and
 follow its rounds until the frontier is empty; if `grilling` is not installed, say so once and ask
 the same way. For a targeted change inside an approved direction, skip the gates below and Stitch,
@@ -45,6 +45,10 @@ directions (stitch.md). Present them with a recommendation and ask the user to s
 one. Selecting a direction authorises exploration, not the production build.
 
 **Complete when** the user has selected a direction.
+
+When the user rules Stitch out, the first gate presents two or three concepts in words, each with
+its composition per device type, its focal idea and its trade-off, and the second gate is the built
+surface verified in a browser; the approved package is then the build itself.
 
 ## 3. Render and approve: second gate
 

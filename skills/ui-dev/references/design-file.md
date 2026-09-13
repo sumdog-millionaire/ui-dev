@@ -1,7 +1,8 @@
 # The product and design files
 
 Two files at the repo root carry a project's design facts. Tools read DESIGN.md's YAML front
-matter; prose alone sets nothing.
+matter; prose alone sets nothing. A standalone page with no brand and no project may go without
+either file; say so, and the checks that read them do not apply.
 
 ## PRODUCT.md
 

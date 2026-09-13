@@ -6,7 +6,8 @@ checks at the end.
 
 ## The detector
 
-A detector finding arrives with the command that records a narrow exception.
+A finding from the hook names the command that records a narrow exception; a `detect` run reports
+findings only.
 
 - A real problem: fix it and re-run the check.
 - A confident false positive or an approved aesthetic: record the narrowest exception, scoped to the value and the file, with the evidence and the reason, and disclose it. "User confirmed" goes in a reason only when the user did.
@@ -52,7 +53,7 @@ stay visible.
 - Fonts suit the brand or were chosen with a stated reason; loaded fonts match the rendering; licences permit use.
 - Every interactive component has its full set of states; empty, loading and error are designed.
 - Motion: one authored moment; every animation justified in one sentence; `animate`'s rules met; scroll storytelling built to motion.md's skeletons where used.
-- The mode file's own checks, where a persuade, operate or read surface applies them.
+- The mode file's tells and triage order, where it carries them.
 - Approved assets took priority; placeholders are labelled; no placeholder image service in a deliverable.
 - Responsive geometry keeps the approved concept, content and functionality, including touch.
 - Performance measured and limitations recorded; the detector's final scan clean or its findings disclosed.

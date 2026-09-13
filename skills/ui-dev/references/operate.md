@@ -22,7 +22,7 @@ display fonts where labels should be, invented affordances for standard tasks.
 ## Labels, copy and tooltips
 
 - Labels are factual, and every word earns its place. A title says what the thing is, plainly; an extra word stays only when it changes the meaning ("Your compass": yours, not the project's) and goes when it is only warmth ("Today's use" becomes "Usage"). Whatever fact the label needed that word for goes under it, smaller, as a clarification ("Resets at 00:00 UTC").
-- Every control and every folder explains itself on hover. A list row is one line; its detail is the tooltip; the list's mechanics are said once on its header.
+- Every control and every folder explains itself on hover. A list row is one line; its detail is the tooltip; the list's mechanics are said once on its header. On a touch surface the same detail is reachable by a press or an expanded row; when the surface is also the phone, which of those is a question for the round.
 - Say a thing once per surface, where it is first met and seen on arrival, not at the end of a scroll or below a fold. Repeat only what answers "what do I do next?" or "what is this?". A page that lists many of the same thing carries the line once, for the page, not under every row.
 - Actions use a specific verb and object when the outcome is not obvious; the same noun and verb for the same concept everywhere. A destructive action names the object and the consequence; prefer undo to confirmation when recovery is safe, and when confirmation is necessary the button names the action rather than "Yes", "OK" or "Submit".
 - An error says what failed, why when that is known and useful, and how to recover; never an internal code as the message; never a promised cause the system cannot know.

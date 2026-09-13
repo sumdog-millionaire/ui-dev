@@ -1,6 +1,6 @@
 ---
 name: ui-dev
-description: Design and build any interface, a marketing page, a web app, a document or docs site, a portfolio, and the phone surface beside them, from brief to verified build. Reads the brief, picks the mode the visitor is in, works from the brand pack, resolves the design decisions, renders the direction in Google Stitch through its MCP server for the user to iterate, then implements the approved screens and verifies them in a browser. Use whenever the user wants to design, redesign, build, restyle, extend or fix a UI, page, screen, dashboard, component, landing page or brand pack, or asks how to use Stitch. Hands interface motion to animate on the web and animate-expo on React Native.
+description: Design and build any interface from brief to verified build, a marketing page, a web app, a docs site, a portfolio, and the phone surface beside them. Reads the brief, picks the mode the visitor is in, works from the brand pack, renders the direction in Google Stitch through its MCP server for the user to iterate, then implements the approved screens and verifies them in a browser. Use this skill for ANY change to what a person sees on screen, however small, a page, screen, component, layout, list row, tooltip, dropdown, dashboard, settings page, landing page, docs page; anything called dated, cluttered, generic, cleaner, more modern, more polished, better looking or better animated; any brand or brand-pack work; and any mention of Stitch, including how to get a screen into it or use it. Load it before reading the code, even when the user never says the word design. Hands interface motion to animate on the web and animate-expo on React Native.
 ---
 
 # ui-dev
@@ -11,11 +11,12 @@ is creative freedom. Accessibility, security and factual accuracy are requiremen
 ## Start here
 
 Read [workflow.md](references/workflow.md) first: the stages, the two approval gates, and the routes
-through Stitch. Then load only what the task needs:
+through Stitch. A targeted change inside an approved direction skips the gates and Stitch and loads
+only the mode file and redesign.md. Otherwise load what the task needs:
 
 | When | Read |
 |---|---|
-| a brand is named, or none exists yet | [brands.md](references/brands.md) |
+| a brand is named, none exists yet, or the task is onboarding one (no design read) | [brands.md](references/brands.md) |
 | the design read picks a mode | [persuade.md](references/persuade.md) (also experience), [operate.md](references/operate.md), or [read.md](references/read.md) |
 | a new or materially revised direction | [stitch.md](references/stitch.md) |
 | DESIGN.md or PRODUCT.md is read or written | [design-file.md](references/design-file.md) |
@@ -70,7 +71,7 @@ persuade; a fashion house's documentation is read.
 5. **Be opinionated.** Lead with the claims only this product can make.
 
 **State the read in one line before anything else:** "Reading this as: <mode>, <page kind> for
-<audience>, with a <vibe> language, leaning toward <design system or aesthetic family>; dials
+<audience>, with a <vibe> language, leaning toward <design system, aesthetic family, or native CSS>; dials
 <variance>/<motion>/<density>." Then load the mode's reference.
 
 **Ask only what changes the direction**, grouped into one round with a recommendation each, and
@@ -128,8 +129,8 @@ page may use a page container. When it is unclear which case applies, ask. `over
 
 ### Typography
 
-- **Brand fonts always win.** With no brand, suggest a face with a reason and ask.
-- **Guidance on what to reach for**: Geist, Cabinet Grotesk, Satoshi and Söhne for a modern sans; for a serif that fits an editorial or heritage brief, Tiempos, GT Sectra, Canela, Domaine or EB Garamond, named for this brand. Operate and read surfaces may use a familiar sans, including Inter or the system stack.
+- **Brand fonts always win**, and a project with a design file has already chosen. With neither, suggest a face with a reason and ask.
+- **Guidance on what to reach for**: Cabinet Grotesk, Satoshi, Söhne or Schibsted Grotesk for a modern sans; for a serif that fits an editorial or heritage brief, Tiempos, GT Sectra, Canela, Domaine or EB Garamond, named for this brand. Operate and read surfaces may use a familiar sans, including the system stack. The detector reports Inter and Geist as overused; a brand that names one records the exception.
 - **Rules on what not to default to**: Fraunces, Playfair Display, Cormorant, Lora, Crimson, Newsreader, Syne, Space Grotesk, Space Mono, IBM Plex, Inter as display type, DM Sans, DM Serif, Outfit, Plus Jakarta Sans, Instrument Sans and Instrument Serif. Choose a serif only when the brand names one, or the brief is editorial, luxury or heritage and you can say why this serif fits this brand.
 - **Emphasis inside a headline** is italic or bold of the same family.
 - **Display type**: tracking floor -0.04em, balanced headings, obvious steps of scale and weight. Italic display type with descenders needs line height of at least 1.1 and a little reserve below, or the descender clips.
@@ -145,9 +146,10 @@ page may use a page container. When it is unclear which case applies, ask. `over
 
 ### Light and dark
 
-Light by default. When the brand guidelines carry a dark mode, build it to them. When they carry
-none, offer to infer a dark theme as a switcher and ask; when the brand is dark, offer light and
-ask. Theme through the project's mechanism: the `dark:` variant in utility projects, semantic CSS
+Light by default. A project whose design file has settled the theme is not asked. When the brand
+guidelines carry a dark mode, build it to them. When they carry none, offer to infer a dark theme
+as a switcher and ask; when the brand is dark, offer light and ask. Theme through the project's
+mechanism: the `dark:` variant in utility projects, semantic CSS
 variables swapped under a theme attribute otherwise. Hierarchy that works in one mode works in the
 other, and the brand colour stays recognisable in both.
 
