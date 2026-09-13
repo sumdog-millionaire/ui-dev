@@ -28,14 +28,19 @@ preserve its routes, behaviour, data and accessibility unless the request change
 
 Resolve the brand with brands.md. If no pack exists, ask what the user wants: onboard a brand into a
 pack, or proceed without one. State the design read with its mode and dials and load the mode's
-reference. Ask which device types the surface needs; never presume. For a new or materially revised direction,
+reference. Ask which device types the surface needs; never presume. List the `ux-playbook` situations each
+screen meets, the state inventory: every screen on an operate surface, and on any other surface each
+screen that fetches data, submits something or asks the person to choose. The inventory shapes the
+questions and goes in the brief's inputs, never in a generation prompt, because Stitch draws only
+the working state. For a new or materially revised direction,
 invoke `grilling` with the brief, the findings, the brand constraints and the open decisions, and
 follow its rounds until the frontier is empty; if `grilling` is not installed, say so once and ask
 the same way. For a targeted change inside an approved direction, skip the gates below and Stitch,
 and apply only the relevant rules.
 
 **Complete when** scope, brand or explicit no-brand choice, content constraints, the mode, the dials
-and the device types are clear, and for a new direction the decision frontier is empty.
+the device types and the state inventory are clear, and for a new direction the decision frontier
+is empty.
 
 ## 2. Direction: first gate
 
@@ -52,8 +57,17 @@ surface verified in a browser; the approved package is then the build itself.
 
 ## 3. Render and approve: second gate
 
-Follow stitch.md's route: the agent hands the project over, the user iterates in Stitch, and the
-agent fetches the screens the user names. The outcome is a rendering per device type, a motion
+Follow stitch.md's route: the agent hands the project over with a short list of what is worth
+looking at, the user iterates in Stitch, and the agent fetches the screens the user names.
+
+Then the state pass. Walk each fetched screen through its state inventory, infer what the working
+state leaves out, and put the gaps to the user as one round, each with a recommendation ("the
+projects list can be empty on first run: one sentence on what goes here and one Create action, or
+hide the section?"). A state that changes the layout, such as a first-run screen, a full-page error
+or a payment confirmation, is proposed as a screen of its own; the ones the user chooses are
+generated in Stitch, so they are seen there before build.
+
+The outcome is a rendering per device type, a motion
 storyboard where narrative motion is in scope (motion.md), and the design file updated with the
 resolved tokens, the supported themes, the responsive rules and the open limitations. Offer Stitch's
 prototype view for checking hover states and input sizing before build; a runnable prototype (the
@@ -71,7 +85,9 @@ Read verification.md and define the checks before changing code. Reuse the curre
 components, semantic HTML, native CSS and installed dependencies; add a library only when the
 approved behaviour needs it. Keep the raw export unchanged in the evidence folder and translate the
 design into the project's own code, extracting tokens and components only where they carry real
-shared meaning. Motion is written by `animate`. Protected text and facts are never edited for fit;
+shared meaning. Motion is written by `animate`. States are built where they belong, to their
+`ux-playbook` entries: a component that fetches owns its loading, empty, error and success states,
+and a section that fetches separately gets its own failure boundary and retry. Protected text and facts are never edited for fit;
 use layout or progressive disclosure instead.
 
 Work in small coherent changes, each with its focused check, following the project's own commit

@@ -27,7 +27,8 @@
       "./skills/extract-design-md",
       "./skills/extract-static-html",
       "./skills/react-components",
-      "./skills/upload-to-stitch"
+      "./skills/upload-to-stitch",
+      "./skills/ux-playbook"
     ],
     "extensions": [
       "./extensions/impeccable.ts"

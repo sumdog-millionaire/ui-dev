@@ -8,8 +8,9 @@ web app.
 
 1. **Prepare.** Connect, choose or create the project, register the design system, and write the brief.
 2. **First pass.** Generate the first screens from the brief, one per device type the surface needs, and variants at the reimagine range for the first gate.
-3. **Hand over.** Give the user the project link, the screens to look at, and the brief; mark the stage as waiting. The user iterates in Stitch until they are satisfied with a screen. When they say "just do it", iterate through the MCP instead, one change per edit.
-4. **Fetch.** On their return, list the screens, ask which won, and fetch exactly those: HTML, screenshot, ids. Fetch the latest after any edit in Stitch.
+3. **Hand over.** Give the user the project link, the screens to look at, and the brief; mark the stage as waiting. Add a short list of what is worth looking at, drawn from `ux-playbook` and limited to what a static screen shows: where the primary action sits (in the thumb zone on a phone), how many choices each screen asks for, and what shows first against what waits behind a trigger; in the prototype view, the buttons' hover, pressed and focus states. The user iterates in Stitch until they are satisfied with a screen. When they say "just do it", iterate through the MCP instead, one change per edit.
+4. **Fetch.** On their return, list the screens, ask which won, and fetch exactly those: HTML, screenshot, ids. Fetch the latest after any edit in Stitch. Then run the state pass (workflow.md).
+5. **State screens.** Generate each layout-changing state the user chose in the state pass into the same project, one call each, naming the screen it belongs to and what differs ("the projects dashboard on first use: no projects yet, one sentence on what will appear here, one Create project action"). Hand them over and fetch them like the first pass.
 
 ## Connect and select
 
@@ -68,7 +69,8 @@ Status: ready | submitted
 The complete text sent, unchanged after submission.
 
 ## Inputs
-Audience and primary tasks; required screens, states, functionality and content hierarchy;
+Audience and primary tasks; required screens, functionality and content hierarchy; the state
+inventory;
 the design system asset id; the design read and dials; selected asset paths.
 
 ## Behaviour

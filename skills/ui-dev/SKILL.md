@@ -33,6 +33,12 @@ supplies the reasoning and physics when the brief asks for that feel; `pick-ui-l
 component when a task needs one rather than an animation. A surface gets one authored moment of
 motion.
 
+**How components and screens behave is `ux-playbook`'s**: loading, errors, forms, empty states,
+success feedback, sections that fail on their own, button states, control placement, choices,
+progressive disclosure and hard steps. Every operate screen takes it; a screen in any other mode
+takes it when it fetches data, submits something or asks the person to choose. workflow.md says
+where it enters the route.
+
 **Prose is written or revised with `anti-ai-slop-writing`**, with the brand's voice and market
 conventions taking precedence over its default register. Supplied facts, quotations and protected
 text are preserved.
@@ -163,10 +169,9 @@ other, and the brand colour stays recognisable in both.
 
 ### States, forms, copy
 
-- Every interactive component ships with default, hover, focus, active, disabled, loading, error and empty.
+- States, forms and error wording follow `ux-playbook`. Beside it: a label sits above its input, and a placeholder is an example, never the label.
 - Button text readable against its background.
-- Forms: label above input, placeholders are examples, helper text present, error text below, format and eligibility requirements before submission, validation that says what to fix without blame.
-- Copy: controls name their action; errors name the problem and the recovery; helper text answers an implicit question rather than restating the control. Re-read every visible string before delivery. Numbers are real, or labelled synthetic.
+- Copy: controls name their action; helper text answers an implicit question rather than restating the control. Re-read every visible string before delivery. Numbers are real, or labelled synthetic.
 - One copy register per page unless the brand voice calls for more.
 
 ### Assets
@@ -182,7 +187,7 @@ Verified before anything ships, with the real copy at every breakpoint:
 
 - **Depth** declared once. **Spacing**: tight groups, generous separation, more space above a heading than below it, on a documented scale with a 4-unit base; read the computed values.
 - **Type**: run the real copy and fix what overflows.
-- **States**: all of them present, with real content and working controls.
+- **States**: every state the state pass named, with real content and working controls.
 - **Browser surfaces**: text selection, the caret, scrollbars, focus rings, underline offset and tabular numerals all ship with browser defaults; theme them from the palette.
 - **Copy**: the product's own language, in the reader's words.
 - **Coverage**: every brief requirement present and findable within seconds.
