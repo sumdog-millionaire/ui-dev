@@ -1,71 +1,87 @@
-# ui-dev workflow
+# Workflow
 
 ## Terms
 
-- **Brand pack:** local source guidelines, assets and an approved BRAND.md describing the organisation's identity.
-- **Design direction:** the project-specific composition, typography, palette, content hierarchy and interaction intent. It may fill gaps in the brand rules without becoming a new official brand rule.
-- **Approved package:** selected rendered views, any required prototype, DESIGN.md and a motion storyboard where necessary. These artefacts are authoritative regardless of the tool that produced them.
+- **Brand pack**: the client's identity as they gave it, in `data/brand/<slug>/` in the working repo: BRAND.md, TONE-OF-VOICE.md, ASSET-INDEX.md, sources and assets (brands.md).
+- **Design file**: the project's `DESIGN.md` at the repo root, tokens and rationale in the open spec, derived from the pack and evolving with the built world (design-file.md).
+- **Direction**: the project-specific composition, typography, palette, hierarchy and interaction intent for a surface. It fills gaps the brand leaves without becoming a brand rule.
+- **Approved package**: the chosen Stitch screens (desktop and mobile), a motion storyboard where narrative motion is in scope, and the design file updated to match. These are authoritative for the build whatever tool produced them.
 
-## Human–agent collaboration
+## How the user and the agent work together
 
-The user owns decisions; the agent does the legwork and surfaces the decisions and human-only actions needed next. At every approval gate or external-tool handoff, tell the user:
+The user owns every decision; the agent does the legwork and surfaces what needs deciding. At every
+gate and every hand-off to an outside tool, say: what is ready (with the preview, file or project
+link); what they must decide or do, as numbered steps naming the tool and the screens; the
+recommendation and its consequence; what to return (a selection, a screen id, a confirmation); and
+what happens next and whether the agent is waiting. "Please confirm" and "review the design" are
+not instructions. Silence, a successful import and a rendered preview are not approval.
 
-1. What is ready: the result and relevant preview, file or returned project link.
-2. What they need to decide or do: concrete numbered steps, naming the tool and selected project/screens where relevant.
-3. Your recommendation and the consequence of the choice, when there are alternatives.
-4. What to return: a selection, confirmation, edited screen/version ID or other non-secret result.
-5. What the agent will do next, and whether it is waiting for them.
-
-Do not say only “please confirm” or “review the design”. Tell the user what to inspect and what approval means. Do not infer approval from silence, an import succeeding or a tool producing a preview. Use the current agent's interactive question tool where available; otherwise ask clearly in the conversation.
-
-If a task is possible through available tools, do it rather than assigning it to the user. If login, account access, visual judgement or an unavailable tool requires human action, state the exact blocker and provide the shortest steps. Never request credentials in chat. Read current interfaces/docs when necessary rather than inventing button names or deep links.
+If a task is possible through available tools, do it rather than assigning it. If login, visual
+judgement or an unavailable tool needs a person, state the exact blocker and the shortest steps.
+Read the current interface rather than inventing button names.
 
 ## 1. Discover
 
-Read the request, project instructions, existing design documentation, framework and dependencies. Identify the audience, task, required content and scope: new direction, material redesign or targeted change. Inspect an existing interface before proposing changes. Preserve its routes, behaviour, data and accessibility unless the request changes them.
+Read the request, the project's instructions, existing design documentation, framework and
+dependencies. Identify the audience, the task, the required content and the scope: a new direction,
+a material redesign, or a targeted change. Inspect an existing surface before proposing changes and
+preserve its routes, behaviour, data and accessibility unless the request changes them.
 
-Resolve the named brand using brands.md. If no brand is named, use an explicitly recorded project selection or ask whether to choose/onboard a pack or continue without one. Never select the first folder or infer a brand merely from the working directory. Show the Design Read and the inferred DESIGN_VARIANCE, MOTION_INTENSITY and VISUAL_DENSITY; accept conversational overrides.
+Resolve the brand with brands.md. If no pack exists, ask what the user wants: onboard a brand into a
+pack, or proceed without one. State the design read with its mode and dials and load the mode's
+reference. For a new or materially revised direction, invoke `grilling` with the brief, the findings,
+the brand constraints and the open decisions, and follow its rounds until the frontier is empty; ask
+for decisions with a recommendation each, never for facts you can read. For a targeted change inside
+an approved direction, skip the gates below and Stitch, and apply only the relevant rules.
 
-For a new or materially revised direction, invoke Matt Pocock's `grilling` skill after gathering the available facts and before proposing concepts. Give it the website brief, project findings, brand constraints and the design decisions still open. Follow its design-tree rounds until the decision frontier is empty and the user confirms shared understanding. Ask the user for decisions, not facts the agent can inspect, and include a recommendation with each question. If the skill is unavailable, say so once and apply the same frontier method directly rather than making installation a blocker.
+**Complete when** scope, brand or explicit no-brand choice, content constraints, the mode and the
+dials are clear, and for a new direction the decision frontier is empty.
 
-For an existing approved direction, skip grilling, concept generation and Stitch unless the change materially alters it. Apply only the relevant sections of Taste to a functional surface. The skill is not permission to redesign unrelated UI.
+## 2. Direction: first gate
 
-**Complete when:** scope, brand or explicit no-brand choice, content constraints and the three dials are clear; for a new direction, the grilling frontier is also resolved.
+For a new direction, register the design system in Stitch from the design file, then generate the
+first screens and up to five variants at the reimagine range, so the choice is between rendered
+directions rather than described ones (stitch.md). Present them with a recommendation and ask the
+user to select or revise one. Selecting a direction authorises exploration, not the production
+build.
 
-## 2. Choose a concept — first approval gate
+**Complete when** the user has selected a direction.
 
-For a new direction, propose two or three genuinely different concepts, not palette swaps. Use concise ASCII layouts or storyboards with desktop and mobile behaviour, the focal visual idea and the main trade-off. Reuse approved assets and describe missing ones honestly.
+## 3. Render and approve: second gate
 
-For significant narrative motion, read motion.md and include its key states. MotionSites is an optional source of references/prompts, not a mandatory subscription or runtime dependency. Do not copy reference sites or treat their promotional claims as acceptance evidence.
+The default route is user-led: the agent hands over the Stitch project with the brief and the first
+pass in it, the user iterates in Stitch until they love it, and the agent then lists the screens,
+asks which won, and fetches exactly those. When the user says "just do it", the agent iterates
+through the MCP instead. Either way the outcome is a desktop and a mobile rendering of equal
+standing, a motion storyboard where narrative motion is in scope (motion.md), and the design file
+updated with the resolved tokens, the supported themes, the responsive rules and the open
+limitations. Offer Stitch's prototype view for checking hover states and input sizing before build;
+a disposable runnable prototype (the `prototype` skill) only when the open question is how an
+interaction feels.
 
-Present the concepts with a recommended choice and ask the user to select or revise one. Explain that this selects the direction to explore, not permission to build the production UI. Wait for their answer before generating the high-fidelity direction.
+Show the rendered direction, its interaction intent and its limitations, name the screens to
+inspect, and ask for approval of an identifiable version. If the user edited screens in Stitch,
+fetch the latest before building; local copies are never assumed current.
 
-**Complete when:** the user has explicitly selected the concept.
-
-## 3. Render and approve — second approval gate
-
-Read stitch.md. Use Stitch by default for the new direction, unless the user explicitly chooses another available design tool. Claude Code's /design is not a dependency. Keep the handoff tool-neutral.
-
-Produce desktop and mobile views with the same conceptual importance. A motion storyboard is sufficient when the behaviour is clear; make a disposable runnable prototype only for unresolved interaction behaviour. Keep it separate from production source and use clearly synthetic data where needed.
-
-Store the selected artefacts and a concise DESIGN.md in the project's existing design area, or propose `docs/design/<surface>/` if none exists. Record the selected screen/project IDs, asset provenance, dials, semantic tokens, supported themes, responsive rules, motion and open limitations. Preserve unrelated design files; a root DESIGN.md may describe another surface.
-
-Show the rendered direction, its interaction intent and known limitations. Follow stitch.md's human review handoff: give a usable preview/project link or screenshots, identify the screens to inspect and explain how the user can request or make changes. Ask for approval of a named version for implementation. Wait for their answer before production implementation. User edits to a design tool require fetching the latest selected artefacts, not assuming local code is current.
-
-**Complete when:** the user approves an identifiable version of the package; unresolved issues that affect implementation are answered or explicitly deferred.
+**Complete when** the user approves a named version and any issue that affects the build is
+answered or explicitly deferred.
 
 ## 4. Implement
 
-Read verification.md and define concrete checks before changing code. Reuse the current stack, components, semantic HTML, native CSS and existing dependencies. Add an animation library only when the approved behaviour needs it.
+Read verification.md and define the checks before changing code. Reuse the current stack,
+components, semantic HTML, native CSS and installed dependencies; add a library only when the
+approved behaviour needs it. Treat the fetched HTML as design evidence, not architecture: keep the
+raw export unchanged in the evidence folder and translate the design into the project's own code,
+extracting tokens and components only where they carry real shared meaning. Motion is written by
+`animate`. Prose is written or revised with the writing skill. Protected text and facts are never
+edited for fit; use layout or progressive disclosure instead.
 
-Treat imported HTML/CSS as design evidence, not mandatory production architecture. Keep the raw import unchanged while translating the selected design into maintainable project code. Extract shared tokens and components when they represent real shared meaning; avoid arbitrary line thresholds, all-values tokenisation, mandatory memoisation or new global state for convenience.
-
-Read the bundled writing skill when creating or revising visible prose. Brand voice, market language and source integrity take precedence over its default register. Do not edit protected text or facts for visual fit. Use responsive layout or progressive disclosure instead.
-
-Implement a small coherent change, run its focused check, fix failures and continue. Do not impose automatic commits or a 20-line deletion approval rule. Follow the project's existing mutation and commit policy.
+Work in small coherent changes, each with its focused check, following the project's own commit
+policy. The detector runs on every edit and once more at the end of the turn; its findings are
+triaged as verification.md says.
 
 ## 5. Verify and deliver
 
-Follow verification.md against the running implementation and approved package. Triage quiet detector findings without surrendering the design direction. A clean detector scan does not prove accessibility, visual parity or production readiness.
-
-Report implemented scope, exact checks/results, evidence locations and remaining failures or untested conditions. Start the project's development server only when useful to the requested review; use its documented command and available port. Do not deploy, publish, spend on asset generation or install global tools merely because a template says to ship.
+Follow verification.md against the running build and the approved package. Report the implemented
+scope, the exact checks and results, where the evidence is, and what remains failing or untested.
+Start the project's development server only when useful to the review, on its documented command.

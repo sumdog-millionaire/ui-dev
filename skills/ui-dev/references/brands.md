@@ -25,6 +25,8 @@ Where a brand has a single overarching frame, one idea everything else serves, s
 
 Create only directories with supplied material; a sparse pack is valid. Keep client material outside the ui-dev repository and distribution.
 
+The pack states what the brand is. The project's design system is a separate document, `DESIGN.md` at the repo root (design-file.md), written from the pack's facts in token form and evolving with each build; it names the pack as its source and nothing is copied between them. When a pack's brand is registered in Stitch, it is registered once as a global design system, reusable across that brand's projects, and its asset id is recorded in ASSET-INDEX.md.
+
 ## Selection and missing packs
 
 Use the explicitly named brand or an already recorded project selection. List available pack names if selection is unclear; ask rather than choosing by folder order. If the selected pack is missing, offer onboarding or an explicitly unbranded/project-only direction. Do not silently create an identity.
@@ -126,6 +128,6 @@ Each correction made to a source example before it was used, old and new.
 
 ## Creative freedom
 
-An omitted rule is not a prohibition. A pack containing only a logo and palette can support a complete project design. Taste may propose typography, motion and a dark theme that respect the supplied rules; record these as project choices in DESIGN.md, not official brand rules in BRAND.md.
+An omitted rule is not a prohibition. A pack containing only a logo and palette can support a complete project design. The agent may propose typography, motion and a dark theme that respect the supplied rules; record these as project choices in DESIGN.md, not official brand rules in BRAND.md.
 
 Pause for material ambiguity, not every missing field. Altering or deforming an existing logo needs a clear decision if permissions are uncertain. Keep sourced logos intact while that decision is open. Functional accessibility and project constraints remain requirements; report a conflict rather than quietly substituting a different brand treatment.

@@ -1,35 +1,195 @@
-# Purposeful motion
+# Scroll storytelling
 
-Describe what motion communicates: hierarchy, narrative, feedback or state change. The approved direction determines the treatment; a numerical motion dial is not an instruction to animate every element.
+Read when a persuade or experience direction carries narrative motion: a section that pins while a
+scene advances, a horizontal pan, a staggered reveal. Everything about ordinary interface motion,
+its curves, durations, springs and whether it should exist, is `animate`'s; this file holds only the
+storytelling shapes `animate` does not carry, and the rules that keep them honest.
 
-## Evidence before implementation
+## Before building
 
-For significant motion, describe trigger, moving subject, start/intermediate/end states, interruption/reverse behaviour, responsive geometry and reduced-motion alternative. A short storyboard at 0/25/50/100% progress is often sufficient. Build a disposable runnable prototype only when behaviour cannot be judged from it. Ordinary hover/focus feedback needs neither a storyboard nor a separate approval gate.
+Describe the trigger, the moving subject, the start, middle and end states, what happens on
+interruption and reversal, the responsive geometry, and the reduced-motion alternative. A storyboard
+at 0, 25, 50 and 100 percent is usually enough; a runnable prototype only when behaviour cannot be
+judged from it. A static screen establishes composition and a click-through establishes navigation;
+neither demonstrates a scroll-linked animation, so record what was actually observed.
 
-Static screens establish composition; a click-through flow establishes navigation. Neither alone demonstrates a working scroll-linked animation. Record what was actually observed.
+## Principles
 
-## Scroll storytelling
+- Normal document scrolling. Native sticky positioning holds a scene while its container's scroll distance advances the animation, and the container ends naturally so following content stays reachable. Wheel and touch input are never intercepted, and there is no locked state; keyboard, touch and scrollbar all work.
+- Geometry comes from the actual containers, refreshed after resize or asset layout, with function-based dimensions and cleanup of every listener and trigger. A travel distance cached only at mount is wrong after the first resize.
+- The base content reads if enhancement fails. Reduced motion removes travel, parallax and pinning while keeping the content and the useful state changes.
+- A travelling subject may follow a different path on desktop and mobile while keeping its narrative; mobile keeps the concept, not a stripped version.
+- `transform` and `opacity` where they achieve the effect; blur, large filters and canvas work need measured justification on target devices. Never the same entrance on every section, and essential content never waits for an animation.
+- Split display text keeps its reading order and copy for assistive technology; animated spans never duplicate screen-reader content. A price, date or other authoritative number is never counted up from zero for decoration.
+- Navigation stays interruptible and reflects real completion, never a fixed timeout; a failed animation never strands the person behind an overlay.
+- A supplied logo is translated along a path, never deformed or redrawn; a decision on altering a mark comes from brands.md.
 
-Use normal document scrolling. Native sticky positioning holds a scene while its container's scroll distance advances the animation; the container ends naturally so following content remains reachable. Do not intercept wheel/touch input, trap scrolling or maintain an artificial locked/unlocked state. Keyboard, touch and scrollbar navigation must all work.
+## Sticky stack
 
-A travelling subject can follow different responsive paths while preserving its narrative on desktop and mobile. Derive geometry from actual containers, refresh after resize or asset layout changes, and clean up listeners/triggers. In GSAP, use function-based dimensions with refresh invalidation; do not cache travel distance only at mount.
+```tsx
+"use client";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useReducedMotion } from "motion/react";
 
-Keep base content readable if enhancement fails. Reduced motion removes spatial travel, parallax and unnecessary pinning/delay while preserving the content and useful state changes. Repeated or long-running motion needs an appropriate pause/stop treatment.
+gsap.registerPlugin(ScrollTrigger);
 
-## Tools
+export function StickyStack({ cards }: { cards: React.ReactNode[] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
 
-Use CSS transitions, sticky positioning, scroll snap and supported scroll-driven animations first. Use an existing animation library where suitable; Motion suits React state transitions and GSAP suits complex scroll timelines. A single library is not compulsory, but each animated property needs one owner. Avoid React state updates on every animation frame.
+  useEffect(() => {
+    if (reduce || !ref.current) return;
+    const ctx = gsap.context(() => {
+      const cardEls = gsap.utils.toArray<HTMLElement>(".stack-card");
+      cardEls.forEach((card, i) => {
+        if (i === cardEls.length - 1) return;
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top top",                              // pin at viewport top
+          endTrigger: cardEls[cardEls.length - 1],
+          end: "top top",
+          pin: true,
+          pinSpacing: false,
+        });
+        gsap.to(card, {
+          scale: 0.92,
+          opacity: 0.55,
+          ease: "none",
+          scrollTrigger: {
+            trigger: cardEls[i + 1],
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          },
+        });
+      });
+    }, ref);
+    return () => ctx.revert();
+  }, [reduce]);
 
-Use transform/opacity where they achieve the intended effect. Blur, large filters and canvas work need measured justification on target devices. Do not animate every section with identical blur/slide/scale treatments or delay essential content until an animation completes.
+  return (
+    <div ref={ref} className="relative">
+      {cards.map((card, i) => (
+        <div
+          key={i}
+          className="stack-card min-h-[100dvh] flex items-center justify-center"
+        >
+          {card}
+        </div>
+      ))}
+    </div>
+  );
+}
+```
 
-Pointer hover effects need a usable touch equivalent; core content cannot depend on hover. Native galleries and disclosure controls are preferable when they meet the design. Keep meaningful reading order and keyboard focus through animated changes.
+Critical points: `start: "top top"`, `pin: true`, every card except the last is pinned, the scale/opacity transform is driven by the NEXT card's scroll trigger (so previous card shrinks as next one arrives).
 
-## Text and facts
+## Horizontal pan
 
-Preserve accessible reading and copying when splitting display text; visually animated spans must not create duplicate screen-reader content. Respect language-specific word segmentation and line breaking. Never count a price, date or other authoritative displayed fact from zero merely for decoration. Optional counters for appropriate marketing metrics must retain an accessible final value and honest data provenance.
+```tsx
+"use client";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useReducedMotion } from "motion/react";
 
-Navigation must remain interruptible and reflect actual completion/state rather than a fixed timeout. Loading and animation failures must not strand the user behind an overlay.
+gsap.registerPlugin(ScrollTrigger);
 
-## Brand artwork
+export function HorizontalPan({ children }: { children: React.ReactNode }) {
+  const wrap = useRef<HTMLDivElement>(null);
+  const track = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
 
-Prefer supplied assets. Translating a logo along a path is different from deforming or redrawing it; check the pack and resolve material uncertainty before altering the mark. Keep any approved illustrative variant separate from the official logo. No particular brand, mascot or bird sequence is built into this skill.
+  useEffect(() => {
+    const root = wrap.current;
+    const trackElement = track.current;
+    if (reduce || !root || !trackElement) return;
+
+    root.classList.add("is-enhanced");
+    try {
+      const ctx = gsap.context(() => {
+        const distance = (): number => Math.max(0, trackElement.scrollWidth - root.clientWidth);
+        gsap.to(trackElement, {
+          x: () => -distance(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: root,
+            start: "top top",                            // pin starts when section top hits viewport top
+            end: () => `+=${Math.max(1, distance())}`,   // recompute when ScrollTrigger refreshes
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+      }, root);
+      ScrollTrigger.refresh();
+      return () => {
+        ctx.revert();
+        root.classList.remove("is-enhanced");
+      };
+    } catch (error) {
+      root.classList.remove("is-enhanced");
+      throw error;
+    }
+  }, [reduce]);
+
+  return (
+    <section
+      ref={wrap}
+      className="relative [&.is-enhanced]:overflow-hidden [&.is-enhanced_.horizontal-pan-track]:flex [&.is-enhanced_.horizontal-pan-track]:h-[100dvh] [&.is-enhanced_.horizontal-pan-track]:items-center"
+    >
+      <div ref={track} className="horizontal-pan-track grid">
+        {children}
+      </div>
+    </section>
+  );
+}
+```
+
+Critical points: `start: "top top"`, `pin: true`, `end: "+=${distance}"` (scroll length = horizontal travel needed), `scrub: 1`. The wrapper is pinned, the inner track slides horizontally as the user scrolls vertically.
+
+## Scroll-reveal stagger
+
+For simple "items appear as they enter viewport" (no pinning), prefer Motion's `whileInView` over GSAP - lighter, no ScrollTrigger needed:
+
+```tsx
+"use client";
+import { motion, useReducedMotion } from "motion/react";
+
+export function RevealStagger({ items }: { items: string[] }) {
+  const reduce = useReducedMotion();
+  return (
+    <ul className="grid gap-6">
+      {items.map((item, i) => (
+        <motion.li
+          key={item}
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.6,
+            delay: i * 0.06,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+        >
+          {item}
+        </motion.li>
+      ))}
+    </ul>
+  );
+}
+```
+
+Use this for: feature lists, testimonial grids, logo walls, anything that just needs "enter on scroll." Save GSAP for actual pin/scrub work.
+
+
+## Scroll mechanics
+
+* **`window.addEventListener("scroll", ...)`** is banned. It runs on every scroll frame, jank-prone, no batching. Use Motion's `useScroll()`, GSAP's `ScrollTrigger`, IntersectionObserver, or CSS `scroll-driven animations` (`animation-timeline: view()`).
+* **Custom scroll progress calculations using `window.scrollY`** in React state. Same reason. Re-renders on every frame.
+* **`requestAnimationFrame` loops that touch React state.** Use motion values (`useMotionValue` + `useTransform`) instead.
+* **Layout Transitions:** Use Motion's `layout` and `layoutId` props for visible state changes (re-ordering lists, expanding modals, shared elements between routes). Do not wrap static content in `layout` props "for safety" - it costs measurement work.
+* **Staggered Orchestration:** Use `staggerChildren` (Motion) or CSS cascade (`animation-delay: calc(var(--index) * 100ms)`) for reveal moments where sequence matters. For `staggerChildren`, parent (`variants`) and children MUST share the same Client Component tree.
+
