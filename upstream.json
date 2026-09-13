@@ -17,7 +17,7 @@
       "vendored": ["animate", "animate-expo", "review-animations", "improve-animations", "pick-ui-library", "prototype", "apple-design", "write-swift"],
       "ours": "skills",
       "reviewedCommit": "d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7",
-      "reviewNotes": "Vendored as copies with three local changes: descriptions edited so no two trigger on the same phrase and each names its lineage; em dashes replaced (scripts/strip-em-dashes.py re-applies this after a sync); pick-ui-library made model-invocable so animate's hand-off to it works; the opportunities skill's four-question gate lifted into improve-animations/AUDIT.md. Not vendored: emil-design-eng, find-animation-opportunities, animation-vocabulary, ask-sonner."
+      "reviewNotes": "Vendored as copies with three local changes: descriptions edited so no two trigger on the same phrase and each names its lineage; em dashes replaced (the upstream-review skill's strip script re-applies this after a sync); pick-ui-library made model-invocable so animate's hand-off to it works; the opportunities skill's four-question gate lifted into improve-animations/AUDIT.md. Not vendored: emil-design-eng, find-animation-opportunities, animation-vocabulary, ask-sonner."
     },
     {
       "name": "impeccable",

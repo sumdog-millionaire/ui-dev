@@ -72,8 +72,8 @@ node "$HOME/.claude/skills/ui-dev/scripts/impeccable.ts" detect frontend/
 
 `/ui-dev:upstream-review` fetches each repository in `upstream.json`, shows what changed in the
 watched paths since the commit last reviewed, and waits for a choice per change. Nothing is
-replaced wholesale; vendored copies keep their local edits, and the em-dash strip
-(`scripts/strip-em-dashes.py`) is re-run on anything re-synced.
+replaced wholesale; vendored copies keep their local edits, and the skill's own em-dash strip is
+re-run on anything re-synced.
 
 ## Attribution
 
