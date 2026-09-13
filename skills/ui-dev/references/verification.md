@@ -16,8 +16,9 @@ Whole-rule or whole-file suppression needs the user's explicit approval, and an 
 added to push a blocked write through. The detector's design-system rules read the design file's
 token block, so a value it reports as undeclared is fixed either in the CSS or in DESIGN.md
 (design-file.md). Finish with an explicit scan of every changed UI file:
-`node "$HOME/.claude/skills/ui-dev/scripts/impeccable.ts" detect <paths>`. Report a missing binary
-or a scan fault as a check not performed.
+`node "$HOME/.claude/skills/ui-dev/scripts/impeccable.ts" detect <paths>`. The same script runs the
+exception commands a finding names (`hooks ignore-value`, `hooks ignore-rule`, `hooks ignore-file`,
+`hooks status`). Report a missing binary or a scan fault as a check not performed.
 
 ## The design file
 

@@ -36,7 +36,7 @@ motion.
 conventions taking precedence over its default register. Supplied facts, quotations and protected
 text are preserved.
 
-**Companions**, called by name when they are installed: `extract-static-html` captures a running
+**Companions**, called by name when they are installed and named as missing when they are not: `extract-static-html` captures a running
 screen as one HTML file, `upload-to-stitch` posts images and HTML to Stitch, `extract-design-md`
 reads a DESIGN.md out of existing source, `react-components` turns a Stitch screen into React. Use
 this workflow's gates and folder conventions when calling them.

@@ -35,8 +35,7 @@ rounded `none`, `sm`, `md`, `lg`, `xl`, `full`.
 omitted: Overview (or Brand & Style), Colors, Typography, Layout (or Layout & Spacing), Elevation &
 Depth (or Elevation), Shapes, Components, Do's and Don'ts. Headings are verbatim because tools
 parse them. Extra sections are preserved by every consumer; a duplicate heading makes the file
-invalid.
-Prose may use descriptive colour names that correspond to the tokens.
+invalid. Prose may use descriptive colour names that correspond to the tokens.
 
 A minimal example:
 
