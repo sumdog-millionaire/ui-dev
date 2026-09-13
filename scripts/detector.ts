@@ -15,7 +15,12 @@ export interface HookEvent {
 
 const require = createRequire(import.meta.url);
 const cli = join(dirname(require.resolve("impeccable/package.json")), "cli", "bin", "cli.js");
-const self = `node "${fileURLToPath(new URL("./impeccable.ts", import.meta.url))}"`;
+// The engine prints this in its footer as the command to run. On Windows it re-quotes anything with a
+// space, which would wrap `node "..."` a second time, so the .cmd shim beside this file is named instead.
+const here = dirname(fileURLToPath(import.meta.url));
+const self = process.platform === "win32"
+  ? join(here, "impeccable.cmd")
+  : `node "${join(here, "impeccable.ts")}"`;
 
 export interface CommandResult {
   stdout: string;
@@ -64,6 +69,6 @@ export async function runDetector(event: HookEvent): Promise<string> {
   assert(typeof context === "string", "ui-dev: unexpected detector response; check not completed");
   return context
     .replaceAll("/impeccable hooks", `${self} hooks`)
-    .replaceAll("/impeccable document", "the ui-dev verification guidance to reconcile the design-system sidecar")
-    + "\nui-dev: preserve the approved brand and design. Fix real defects; disclose narrow, evidence-backed exceptions. No Impeccable skills are installed. Browser verification is still required.";
+    .replaceAll("/impeccable document", "the design-file reference in the ui-dev skill (references/design-file.md) to refresh DESIGN.md and its sidecar")
+    + "\nui-dev: preserve the approved brand and design. Fix real defects; disclose narrow, evidence-backed exceptions. Browser verification is still required.";
 }

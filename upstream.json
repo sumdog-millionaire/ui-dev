@@ -1,7 +1,40 @@
 {
-  "repository": "https://github.com/Leonxlnx/taste-skill.git",
-  "reviewedCommit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
-  "sourcePath": "skills/taste-skill",
-  "policy": "Review upstream changes and selectively adopt approved improvements; never replace the customised skill wholesale.",
-  "reviewNotes": "Initial ui-dev baseline. Brand authority, human handoffs, Stitch workflow, writing integration, cross-agent hooks and corrected defaults are local customisations."
+  "policy": "Each entry names a source this plugin took text or files from. The upstream-review skill fetches each, diffs its sourcePath since reviewedCommit, and proposes adopt, adapt or skip per change; a change is applied to our customised copy, never by replacing it. reviewedCommit moves only after the approved changes pass the checks.",
+  "upstreams": [
+    {
+      "name": "taste-skill",
+      "repository": "https://github.com/Leonxlnx/taste-skill.git",
+      "sourcePath": "skills/taste-skill",
+      "alsoWatch": ["skills/soft-skill", "skills/minimalist-skill", "skills/brutalist-skill", "skills/redesign-skill"],
+      "ours": "skills/ui-dev",
+      "reviewedCommit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+      "reviewNotes": "ui-dev is a customised fork of the v2 skill: scope widened to every surface, brand rules beat aesthetic defaults, marketing caps demoted to prompts, quotes and facts preserved, pre-flight reported honestly. The three style skills feed references/styles.md and the redesign skill feeds references/redesign.md."
+    },
+    {
+      "name": "emilkowalski-skills",
+      "repository": "https://github.com/emilkowalski/skills.git",
+      "sourcePath": "skills",
+      "vendored": ["animate", "animate-expo", "review-animations", "improve-animations", "pick-ui-library", "prototype", "apple-design", "write-swift"],
+      "ours": "skills",
+      "reviewedCommit": "d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7",
+      "reviewNotes": "Vendored as copies with three local changes: descriptions edited so no two trigger on the same phrase and each names its lineage; em dashes replaced (scripts/strip-em-dashes.py re-applies this after a sync); pick-ui-library made model-invocable so animate's hand-off to it works; the opportunities skill's four-question gate lifted into improve-animations/AUDIT.md. Not vendored: emil-design-eng, find-animation-opportunities, animation-vocabulary, ask-sonner."
+    },
+    {
+      "name": "impeccable",
+      "repository": "https://github.com/pbakaus/impeccable.git",
+      "sourcePath": "skill",
+      "ours": "skills/ui-dev/references",
+      "reviewedCommit": "cb56ed6c19a07329a9fa0cd4e657bee040156593",
+      "reviewNotes": "Text lifted, not files: the four modes and the craft floor into the body, the operate reference and the copy, empty-state, cognitive-load and triage passages into references/operate.md, the typography lines into references/read.md, the product and design file conventions into references/design-file.md. The detector binary is a pinned npm dependency (package.json), updated by npm, not by this review."
+    },
+    {
+      "name": "stitch-skills",
+      "repository": "https://github.com/google-labs-code/stitch-skills.git",
+      "sourcePath": "plugins",
+      "installedBeside": ["stitch-design/skills/extract-static-html", "stitch-design/skills/upload-to-stitch", "stitch-design/skills/extract-design-md", "stitch-build/skills/react-components"],
+      "ours": "skills/ui-dev/references/stitch.md",
+      "reviewedCommit": "0337446dadde6f8c94210444e2aa9d546126480f",
+      "reviewNotes": "Four skills installed as companions in ~/.claude/skills (not vendored here); ui-dev routes to them by name. Text lifted into references/stitch.md: the generation rule (a design system present means no colour, font or theme in a generation prompt), the edit-prompt shape, the variant options, the id-shape table, the signed-URL and width-suffix rules, and the placeholder-link trap."
+    }
+  ]
 }
