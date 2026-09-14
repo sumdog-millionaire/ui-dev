@@ -32,11 +32,12 @@ reference. Ask which device types the surface needs; never presume. List the `ux
 screen meets, the state inventory: every screen on an operate surface, and on any other surface each
 screen that fetches data, submits something or asks the person to choose. The inventory shapes the
 questions and goes in the brief's inputs, never in a generation prompt, because Stitch draws only
-the working state. For a new or materially revised direction,
-invoke `grilling` with the brief, the findings, the brand constraints and the open decisions, and
-follow its rounds until the frontier is empty; if `grilling` is not installed, say so once and ask
-the same way. For a targeted change inside an approved direction, skip the gates below and Stitch,
-and apply only the relevant rules.
+the working state. Then invoke `grilling` with `domain-modeling` loaded beside it (the pair
+`/grill-with-docs` runs), always, with the brief, the findings, the brand constraints and the open
+decisions, and follow its rounds until the frontier is empty, writing each settled decision as a
+record as it lands; the user leads the decisions. If `grilling` is not installed, say so once and ask the same way. For a
+targeted change inside an approved direction, skip the gates below and Stitch, and apply only the
+relevant rules.
 
 **Complete when** scope, brand or explicit no-brand choice, content constraints, the mode, the dials
 the device types and the state inventory are clear, and for a new direction the decision frontier

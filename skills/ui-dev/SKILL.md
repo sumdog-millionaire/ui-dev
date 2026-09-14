@@ -81,10 +81,12 @@ persuade; a fashion house's documentation is read.
 <audience>, with a <vibe> language, leaning toward <design system, aesthetic family, or native CSS>; dials
 <variance>/<motion>/<density>." Then load the mode's reference.
 
-**Ask only what changes the direction**, grouped into one round with a recommendation each, and
-never for facts available in the project. Every question this skill raises (which width case, which
-face, whether to infer a dark mode, which pack, which kind of redesign, which device types) joins
-that round rather than interrupting on its own. If the read is confident, declare it and proceed.
+**The user leads the decisions, so every question goes through `grilling`, always, with
+`domain-modeling` loaded beside it so each settled decision is written as a record and a glossary
+entry as it lands** (what `/grill-with-docs` does; the agent cannot invoke that command itself).
+Load both once the read is stated and hand grilling the open decisions; every question this skill raises (which width
+case, which face, whether to infer a dark mode, which pack, which kind of redesign, which device
+types) joins its frontier. Never ask for a fact available in the project.
 
 **Anti-default discipline.** The generated-interface defaults are purple gradients, a centred hero
 over a dark mesh, three equal feature cards, glass on everything, infinite micro-animations, Inter
