@@ -84,7 +84,7 @@ persuade; a fashion house's documentation is read.
 **The user leads the decisions, so every question goes through `grilling`, always, with
 `domain-modeling` loaded beside it so each settled decision is written as a record and a glossary
 entry as it lands** (what `/grill-with-docs` does; the agent cannot invoke that command itself).
-Load both once the read is stated and hand grilling the open decisions; every question this skill raises (which width
+Load `grilling` and `domain-modeling` together, in the same step, once the read is stated, never one without the other, and hand grilling the open decisions; every question this skill raises (which width
 case, which face, whether to infer a dark mode, which pack, which kind of redesign, which device
 types) joins its frontier. Never ask for a fact available in the project.
 
