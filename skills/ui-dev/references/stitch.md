@@ -15,14 +15,16 @@ screen: the browser shows a page the agent built, not the screen Stitch holds, a
 is about the screen Stitch holds. A browser enters only at implementation, against the built code
 (verification.md).
 
-## The default route: one surface, one subscreen at a time
+## The route: one surface, one subscreen at a time
 
-A **surface** is a device type's whole app (the phone, the desk). A **subscreen** is one workflow on
-it (the chat with its composer, the drawer, the viewer with comments), and a subscreen may take
-several screens where a state changes the layout. The work goes one surface at a time and, within
-it, one subscreen at a time, each to its own gate, and never several subscreens drawn at once:
-what the first subscreen settles is what every later one inherits, so a decision taken on a
-finished subscreen is cheaper than one taken across six half-finished ones.
+This is the only way Stitch is used, whether the surface is new or an existing screen was brought
+in (the Inbound section below is how a built screen enters it, not another route). A **surface** is
+a device type's whole app (the phone, the desk). A **subscreen** is one workflow on it (the chat
+with its composer, the drawer, the viewer with comments), and a subscreen may take several screens
+where a state changes the layout. The work goes one surface at a time and, within it, one subscreen
+at a time, each to its own gate, and never several subscreens drawn at once: what the first
+subscreen settles is what every later one inherits, so a decision taken on a finished subscreen is
+cheaper than one taken across six half-finished ones.
 
 1. **Prepare.** Connect, choose or create the project, register the design system, and write the brief.
 2. **First pass.** Generate the first screens from the brief, one per device type the surface needs, and variants at the reimagine range for the first gate.
