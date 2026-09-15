@@ -58,8 +58,11 @@ surface verified in a browser; the approved package is then the build itself.
 
 ## 3. Render and approve: second gate
 
-Follow stitch.md's route: the agent hands the project over with a short list of what is worth
-looking at, the user iterates in Stitch, and the agent fetches the screens the user names.
+Follow stitch.md's route, one surface at a time and one subscreen at a time within it: the agent
+iterates a subscreen in Stitch until it is about eighty per cent there, hands it over with a short
+list of what is worth looking at, waits for the user to iterate in Stitch and say it is done, then
+fetches their version and draws the next subscreen from it. A Stitch screen is looked at only
+through Stitch's own tools, never a browser.
 
 Then the state pass. Walk each fetched screen through its state inventory, infer what the working
 state leaves out, and put the gaps to the user as one round, each with a recommendation ("the

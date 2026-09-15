@@ -4,13 +4,32 @@ Read for a new or materially revised direction. Upload images and HTML with `upl
 REST. Apply the design system per screen. The prototype view and the Figma export exist only in the
 web app.
 
-## The default route
+## How a Stitch screen is looked at
+
+A screen in Stitch is looked at through Stitch's own tools and nothing else. `get_screen` returns
+the HTML and the screenshot; the agent views the screenshot as an image and reads the HTML for what
+a picture cannot show (every string, the structure, a section generated and hidden, a hover or
+pressed state). Any further tool the Stitch server offers for reading a screen may be used too.
+**Never Playwright, never Chrome, never any browser** to render, measure or screenshot a Stitch
+screen: the browser shows a page the agent built, not the screen Stitch holds, and the design stage
+is about the screen Stitch holds. A browser enters only at implementation, against the built code
+(verification.md).
+
+## The default route: one surface, one subscreen at a time
+
+A **surface** is a device type's whole app (the phone, the desk). A **subscreen** is one workflow on
+it (the chat with its composer, the drawer, the viewer with comments), and a subscreen may take
+several screens where a state changes the layout. The work goes one surface at a time and, within
+it, one subscreen at a time, each to its own gate, and never several subscreens drawn at once:
+what the first subscreen settles is what every later one inherits, so a decision taken on a
+finished subscreen is cheaper than one taken across six half-finished ones.
 
 1. **Prepare.** Connect, choose or create the project, register the design system, and write the brief.
 2. **First pass.** Generate the first screens from the brief, one per device type the surface needs, and variants at the reimagine range for the first gate.
-3. **Look first, then hand over.** Before the user sees anything, fetch each generated screen's screenshot and look at it: fix what is wrong with edits until it is fit for a person to review. It need not be perfect; it must not be a mess. Then give the user the project link, the screens to look at, and the brief; mark the stage as waiting. Add a short list of what is worth looking at, drawn from `ux-playbook` and limited to what a static screen shows: where the primary action sits (in the thumb zone on a phone), how many choices each screen asks for, and what shows first against what waits behind a trigger; in the prototype view, the buttons' hover, pressed and focus states. The user iterates in Stitch until they are satisfied with a screen. When they say "just do it", iterate through the MCP instead, one change per edit.
-4. **Fetch.** On their return, list the screens, ask which won, and fetch exactly those: HTML, screenshot, ids. Fetch the latest after any edit in Stitch. Then run the state pass (workflow.md).
-5. **State screens.** Generate each layout-changing state the user chose in the state pass into the same project, one call each, naming the screen it belongs to and what differs ("the projects dashboard on first use: no projects yet, one sentence on what will appear here, one Create project action"). Hand them over and fetch them like the first pass.
+3. **The agent's own loop, to about eighty per cent.** Before the user sees anything, fetch the screen and look at it (the section above), then fix what is wrong with edits, one change per edit, and look again; several rounds are normal. Stop when the agent is satisfied it is about eighty per cent there: the anatomy right, the words the product's own, nothing that would embarrass it in front of a person. It need not be perfect; it must not be a mess, and polish past that point is the user's, who has the better eye.
+4. **Hand over, and wait.** Give the user the project link, the screen ids and titles to look at, and the brief; put the screenshot in front of them; mark the stage as waiting. Add a short list of what is worth looking at, drawn from `ux-playbook` and limited to what a static screen shows: where the primary action sits (in the thumb zone on a phone), how many choices each screen asks for, and what shows first against what waits behind a trigger; in the prototype view, the buttons' hover, pressed and focus states. The user iterates in Stitch until they are satisfied. When they say "just do it", iterate through the MCP instead, one change per edit. **Nothing moves to the next subscreen without their okay.**
+5. **Their version is the substrate.** The user's iteration is usually followed by a context rewind, so on return the agent reads, never remembers: list the screens, ask which won if more than one could have, and fetch exactly those with `get_screen`, the latest after any edit. Read the HTML as well as the screenshot, because the user's edits are the decisions, and note what changed against the handed-over version as settled. That screen is what the next subscreen is drawn from and must agree with, on every surface it shares parts with.
+6. **The next subscreen**, from step 3, and so on until the surface's list is done. Then the state pass (workflow.md), and each layout-changing state the user chose is generated into the same project, one call each, naming the screen it belongs to and what differs ("the projects dashboard on first use: no projects yet, one sentence on what will appear here, one Create project action"), and handed over and fetched like any other subscreen.
 
 ## Connect and select
 
