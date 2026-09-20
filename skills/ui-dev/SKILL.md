@@ -1,6 +1,6 @@
 ---
 name: ui-dev
-description: Design and build any interface from brief to verified build, a marketing page, a web app, a docs site, a portfolio, and the phone surface beside them. Reads the brief, picks the mode the visitor is in, works from the brand pack, renders the direction in Google Stitch through its MCP server for the user to iterate, then implements the approved screens and verifies them in a browser. Use this skill for ANY change to what a person sees on screen, however small, a page, screen, component, layout, list row, tooltip, dropdown, dashboard, settings page, landing page, docs page; anything called dated, cluttered, generic, cleaner, more modern, more polished, better looking or better animated; any brand or brand-pack work; and any mention of Stitch, including how to get a screen into it or use it. Load it before reading the code, even when the user never says the word design. Hands interface motion to animate on the web and animate-expo on React Native.
+description: Design and build any interface from brief to verified build, a marketing page, a web app, a docs site, a portfolio, and the phone surface beside them. Reads the brief, picks the mode the visitor is in, works from the brand folder, renders the direction in Google Stitch through its MCP server for the user to iterate, then implements the approved screens and verifies them in a browser. Use this skill for ANY change to what a person sees on screen, however small, a page, screen, component, layout, list row, tooltip, dropdown, dashboard, settings page, landing page, docs page; anything called dated, cluttered, generic, cleaner, more modern, more polished, better looking or better animated; any brand or brand-folder work; and any mention of Stitch, including how to get a screen into it or use it. Load it before reading the code, even when the user never says the word design. Hands interface motion to animate on the web and animate-expo on React Native.
 ---
 
 # ui-dev
@@ -40,7 +40,7 @@ takes it when it fetches data, submits something or asks the person to choose. w
 where it enters the route.
 
 **Prose is written or revised with `anti-ai-slop-writing`**, with the brand's voice and market
-conventions taking precedence over its default register. Supplied facts, quotations and protected
+conventions taking precedence over its default tone. Supplied facts, quotations and protected
 text are preserved.
 
 **Companions** in this plugin: `extract-static-html` captures a running screen as one HTML file,
@@ -48,6 +48,29 @@ text are preserved.
 existing source, `react-components` turns a Stitch screen into React. When calling them, this
 workflow's two gates are the only approval points, and the project's DESIGN.md is `docs/DESIGN.md`
 wherever a companion names `.stitch/DESIGN.md`.
+
+**Words for the person.** This skill has working words of its own, and they stay in these files. To the
+person, say the thing in plain words, the way someone with no design training would say it:
+
+| The skill's word | Say to the person |
+|---|---|
+| the design read | what I am taking this to be |
+| mode (persuade, operate, read, experience) | what the visitor came to do: to decide, to get a job done, to understand, or to look at the work |
+| dials, and a number for each | how symmetrical the layout is, how much movement, how tightly packed, each in words |
+| surface | the page, or the screen |
+| direction | the proposed look |
+| subscreen | one part of the screen |
+| state inventory | what each screen shows while loading, when empty, and when it fails |
+| gate | an approval point |
+| the approved package | the approved screens |
+| the frontier | the open questions |
+| the brand pack | the brand folder |
+| tokens, front matter | the exact values at the top of the file |
+| lint | check the file for mistakes |
+| the detector | the style checker |
+
+The same holds for any heading written into a file a person opens: brands.md and design-file.md give
+the plain headings, and the ones Google's format fixes keep their names with a plain line under them.
 
 ## 1. The design read
 
@@ -77,16 +100,18 @@ persuade; a fashion house's documentation is read.
 4. **Cut the fluff.** Anything that is not the core value is a distraction: fewer sections, one action.
 5. **Be opinionated.** Lead with the claims only this product can make.
 
-**State the read in one line before anything else:** "Reading this as: <mode>, <page kind> for
-<audience>, with a <vibe> language, leaning toward <design system, aesthetic family, or native CSS>; dials
-<variance>/<motion>/<density>." Then load the mode's reference.
+**State the read in one line before anything else, in plain words:** "I am taking this to be a <page
+kind> for <audience>, who come to <what the visitor came to do>. It should feel <vibe>, built on <design
+system, aesthetic family, or native CSS>, with a <how symmetrical> layout, <how much> movement and <how
+tightly packed> screens." Never the mode's label and never a dial's number. Then load the mode's
+reference.
 
 **The user leads the decisions, so every question goes through `grilling`, always, with
 `domain-modeling` loaded beside it so each settled decision is written as a record and a glossary
 entry as it lands** (what `/grill-with-docs` does; the agent cannot invoke that command itself).
 Load `grilling` and `domain-modeling` together, in the same step, once the read is stated, never one without the other, and hand grilling the open decisions; every question this skill raises (which width
-case, which face, whether to infer a dark mode, which pack, which kind of redesign, which device
-types) joins its frontier. Never ask for a fact available in the project.
+case, which font, whether to infer a dark mode, which brand folder, which kind of redesign, which
+device types) joins its frontier, which to the person is "the open questions". Never ask for a fact available in the project.
 
 **Anti-default discipline.** The generated-interface defaults are purple gradients, a centred hero
 over a dark mesh, three equal feature cards, glass on everything, infinite micro-animations, Inter
@@ -174,7 +199,7 @@ other, and the brand colour stays recognisable in both.
 - States, forms and error wording follow `ux-playbook`. Beside it: a label sits above its input, and a placeholder is an example, never the label.
 - Button text readable against its background.
 - Copy: controls name their action; helper text answers an implicit question rather than restating the control. Re-read every visible string before delivery. Numbers are real, or labelled synthetic.
-- One copy register per page unless the brand voice calls for more.
+- One tone of writing per page unless the brand voice calls for more.
 
 ### Assets
 

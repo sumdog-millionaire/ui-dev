@@ -2,8 +2,11 @@
 
 ## Terms
 
-- **Design file**: `docs/DESIGN.md`, the brand's visual identity and the project's design system in the open spec: tokens, rationale, logos and motion, written from the brand's guidelines and evolving with the built world (design-file.md).
-- **Brand pack**: `docs/brand/` beside it, holding what the spec has no place for: TONE-OF-VOICE.md, the asset files and the sources (brands.md).
+These are this skill's working words. To the person, say each in plain words: SKILL.md has the table
+("Words for the person").
+
+- **Design file**: `docs/DESIGN.md`, the brand's visual identity and the project's design system in Google's open DESIGN.md format: exact values, reasons, logos and motion, written from the brand's guidelines and evolving with the built world (design-file.md).
+- **Brand folder**: `docs/brand/` beside it, holding what the format has no place for: TONE-OF-VOICE.md, the asset files and the sources (brands.md).
 - **Direction**: the project-specific composition, typography, palette, hierarchy and interaction intent for a surface.
 - **Approved package**: the chosen Stitch screens, one per device type the surface needs, a motion storyboard where narrative motion is in scope, and the design file updated to match. The approved package is authoritative for the build.
 
@@ -26,9 +29,9 @@ dependencies. Identify the audience, the task, the required content and the scop
 a material redesign, or a targeted change. Inspect an existing surface before proposing changes and
 preserve its routes, behaviour, data and accessibility unless the request changes them.
 
-Resolve the brand with brands.md. If no pack exists, ask what the user wants: onboard a brand into a
-pack, or proceed without one. State the design read with its mode and dials and load the mode's
-reference. Ask which device types the surface needs; never presume. List the `ux-playbook` situations each
+Resolve the brand with brands.md. If no brand folder exists, ask what the user wants: onboard a brand
+into one, or proceed without one. State the design read in plain words (SKILL.md has the line) and
+load the mode's reference. Ask which device types the surface needs; never presume. List the `ux-playbook` situations each
 screen meets, the state inventory: every screen on an operate surface, and on any other surface each
 screen that fetches data, submits something or asks the person to choose. The inventory shapes the
 questions and goes in the brief's inputs, never in a generation prompt, because Stitch draws only

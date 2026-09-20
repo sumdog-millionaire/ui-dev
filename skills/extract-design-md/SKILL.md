@@ -24,12 +24,8 @@ Analyze frontend source code to extract a comprehensive design system document
 spacing, component patterns, and layout principles, directly from the source
 files, without needing to build or render the application.
 
-## Why This Exists
-
-The `design-md` skill works from rendered HTML. But often you have a codebase
-and want to understand its design system before you can even run the app, maybe dependencies are missing, the build is broken, or you just want a quick
-audit. This skill reads the source files themselves: stylesheets, component
-files, theme configs, and Tailwind setups. It's faster and works anywhere.
+It reads the source files themselves (stylesheets, component files, theme configs and Tailwind
+setups), so it works when the app cannot be run: dependencies missing, a broken build, or a quick audit.
 
 ## When to Use
 
@@ -161,16 +157,16 @@ Search across all layers:
 
 **How to organize:** Group colors by function, not by hue:
 
-1. **Primary Foundation**, Background and surface colors
-2. **Accent & Interactive**, CTA buttons, active states, links
-3. **Typography & Text Hierarchy**, Primary, secondary, tertiary text
-4. **Functional States**, Success, error, warning, info
+1. **Backgrounds and panels**
+2. **Colours for things you can press**: the main button, active states, links
+3. **Text colours**: main, secondary and quiet text
+4. **Success, error and warning colours**, and information
 
 For each color, create a descriptive name that evokes the color's character
 rather than its raw hex value:
 
-- ❌ `#294056` → "Blue"
-- ✅ `#294056` → **"Deep Muted Teal-Navy"**, Primary CTA, active navigation
+- Not this: `#294056` → "Blue"
+- This: `#294056` → **"Deep Muted Teal-Navy"**, the main button and the active item in the navigation
 
 **Deduplication matters.** Codebases often have near-duplicate colors (e.g.,
 `#333` and `#2C2C2C`). Consolidate them under one name that best represents
@@ -202,26 +198,26 @@ Extract the complete typographic system:
 
 #### 4. Component Stylings
 
-Analyze the 4-5 most important UI primitives:
+Analyze the four or five basic parts every screen is built from:
 
 **Buttons:**
 - Corner radius (and what it communicates, playful? professional? minimal?)
-- Color scheme for primary, secondary, and ghost variants
+- Color scheme for the main button, the secondary one, and a button with no fill
 - Hover/focus/active states and transition timing
 - Padding ratios (horizontal vs vertical)
 
 **Cards / Containers:**
 - Corner radius (often different from buttons, slightly rounder)
 - Shadow strategy: flat, subtle hover shadows, or always elevated?
-- Border treatment: hairline borders, colored accents, or none?
+- Border treatment: a 1px line, colored accents, or none?
 - Internal padding (generous or compact?)
-- Image treatment within cards (full-bleed, padded, rounded?)
+- Image treatment within cards (edge to edge, padded, rounded?)
 
 **Navigation:**
 - Layout pattern (horizontal bar, vertical sidebar, drawer)
 - Typography treatment (uppercase, letter-spacing, weight)
 - Active/hover state indicators (underline, color, background)
-- Mobile behavior (hamburger, bottom nav, drawer)
+- Mobile behavior (the three-line menu button, bottom nav, drawer)
 
 **Inputs & Forms:**
 - Border style and focus state behavior
@@ -270,65 +266,53 @@ Synthesize the extraction into actionable prompts for Stitch:
 
 ### Phase 3: Write the DESIGN.md
 
-Assemble everything into the standard DESIGN.md format. Place it at
-`.stitch/DESIGN.md` in the project directory (create the `.stitch/` directory
-if it doesn't exist).
+Write the file in Google's open DESIGN.md format, at `docs/DESIGN.md`, the one place the `ui-dev` skill
+and the style checker look for it. `ui-dev`'s `references/design-file.md` has the format in full; the
+example at [examples/DESIGN.md](examples/DESIGN.md) is a filled one.
 
-> [!IMPORTANT]
-> You **MUST** include the YAML frontmatter at the top of the file with `name` and `colors` mapping, exactly as shown in the example at [examples/DESIGN.md](examples/DESIGN.md). This structured data is required for other skills to parse the design system.
->
-> Failure to include this YAML block with at least the core color tokens is a failure to use this skill correctly.
-
-Use the format from the example at [examples/DESIGN.md](examples/DESIGN.md) as your template. The file must start with the YAML block, followed by the markdown sections:
+The file starts with the block of exact values (`name`, and `colors` with at least `primary`), because
+that block is what every tool reads and a file without it sets nothing. Then the format's sections, with
+their headings exactly as the format spells them and in this order, each opening with its plain line so a
+person with no design training can read the file:
 
 ```markdown
-# Design System: [Project Name]
-**Project ID:** [If known, otherwise omit]
+## Overview
+[The mood of the interface in two or three sentences, and where it is used]
 
-## 1. Visual Theme & Atmosphere
-[Rich 2-paragraph description of mood, philosophy, and key characteristics]
+## Colors
+The colours and what each one is for.
+[Backgrounds and panels; colours for things you can press; text colours; success, error and warning colours]
 
-## 2. Color Palette & Roles
-### Primary Foundation
-### Accent & Interactive
-### Typography & Text Hierarchy
-### Functional States
+## Typography
+Which fonts are used, and at what size.
 
-## 3. Typography Rules
-### Hierarchy & Weights
-### Spacing Principles
+## Layout
+Page width, spacing and what lines up.
 
-## 4. Component Stylings
-### Buttons
-### Cards & [Domain-Specific Containers]
-### Navigation
-### Inputs & Forms
-### [Domain-Specific Components]
+## Elevation & Depth
+How near or far a thing looks: shadows and borders.
 
-## 5. Layout Principles
-### Grid & Structure
-### Whitespace Strategy
-### Alignment & Visual Balance
-### Responsive Behavior & Touch
+## Shapes
+How rounded the corners are.
 
-## 6. Design System Notes for Stitch Generation
-### Language to Use
-### Color References
-### Component Prompts
-### Incremental Iteration
+## Components
+How buttons, cards, menus and inputs look.
+[Buttons, cards, navigation, inputs and forms, then anything particular to this product]
+
+## Do's and Don'ts
+
+## How to describe this design to Stitch
+[Wording to paste into Stitch when asking it for a screen, and how to refine a screen in small steps]
 ```
+
+`primary` is the main brand colour, as the format has it, never the page background.
 
 ---
 
-### Phase 4: Integration (Optional)
+### Phase 4: Into Stitch (optional)
 
-If the user wants to push the design system into Stitch:
-
-1. Hand off to the `manage-design-system` skill for the MCP create/update calls
-2. The DESIGN.md you wrote is the input, the manage-design-system skill handles
-   the Stitch API integration
-
-If the user just wants the document, you're done after Phase 3.
+If the user wants the design system in Stitch, `ui-dev`'s `references/stitch.md` has the calls, and the
+DESIGN.md you wrote is their input. If the user just wants the document, you're done after Phase 3.
 
 ---
 
