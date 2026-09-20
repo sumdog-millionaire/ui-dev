@@ -1,8 +1,9 @@
 # The product and design files
 
-Two files at the repo root carry a project's design facts. Tools read DESIGN.md's YAML front
-matter; prose alone sets nothing. A standalone page with no brand and no project may go without
-either file; say so, and the checks that read them do not apply.
+Two files in `docs/` carry a project's design facts, with the brand pack beside them in
+`docs/brand/` (brands.md). Tools read DESIGN.md's YAML front matter; prose alone sets nothing. A
+standalone page with no brand and no project may go without either file; say so, and the checks
+that read them do not apply.
 
 ## PRODUCT.md
 
@@ -14,9 +15,10 @@ is written once and touched when a fact changes.
 
 ## DESIGN.md
 
-The project's design system, written from the built world. It starts as the brand pack's facts
-(brands.md) translated into tokens and evolves with each build. Nothing is copied between the pack
-and this file: this file points at the pack for sources.
+The brand's visual identity and the project's design system in one file: the brand's sourced
+values as tokens, the rationale for each, and what the build has added since. It points at
+`docs/brand/` for files and sources and at PRODUCT.md for audience and positioning, and restates
+neither.
 
 The spec, version `alpha`, has two layers:
 
@@ -35,8 +37,30 @@ rounded `none`, `sm`, `md`, `lg`, `xl`, `full`.
 **Markdown body**, the human rationale, in eight `##` sections in this order, any of which may be
 omitted: Overview (or Brand & Style), Colors, Typography, Layout (or Layout & Spacing), Elevation &
 Depth (or Elevation), Shapes, Components, Do's and Don'ts. Headings are verbatim because tools
-parse them. Extra sections are preserved by every consumer; a duplicate heading makes the file
-invalid. Prose may use descriptive colour names that correspond to the tokens.
+parse them. Extra sections are preserved by every consumer, which is where the brand's logos,
+motion, voice and unknowns go, after the eight (brands.md); a duplicate heading makes the file
+invalid. Extra front-matter keys are accepted silently unless one looks like a misspelt spec key.
+Prose may use descriptive colour names that correspond to the tokens.
+
+## Writing it well
+
+An agent reads a token's name as its job and the prose as its limits, so the file works only when
+both are there.
+
+- **A token is a decision, named by its role.** `primary`, `surface`, `text-muted`, `border-subtle`,
+  never `blue` or `gray-1`: a name that describes appearance gives an agent nothing to choose by.
+  Writing the block is the moment to audit: drop a value nothing uses, merge two values doing one
+  job, and correct one used for the wrong job.
+- **Each decision carries its reasoning and its boundary.** Value, then what it is for, then why,
+  then where it must not go: "Deep Indigo (`primary`) for primary buttons, selected states and key
+  calls to action; never a large background or decoration, because it overpowers the interface."
+  The boundary is the part that stops drift, and the part most files leave out. Name the token in
+  the prose so the rule and the value stay joined.
+- **Components are built from the tokens, in every state.** A component entry references tokens
+  (`{colors.primary}`), never a literal the block already names. Default alone is not enough: give
+  hover, active, focus, disabled and loading, as sibling keys in the front matter where the eight
+  properties can express the state and in the Components prose where they cannot (a focus ring, an
+  opacity, a spinner).
 
 A minimal example:
 
@@ -76,11 +100,13 @@ components:
 ---
 
 ## Overview
-A calm, professional interface for a healthcare scheduling platform. Sources: data/brand/acme/.
+A calm, professional interface for a healthcare scheduling platform. Sources: docs/brand/sources/.
 
 ## Colors
-- **Primary (#1A1C1E):** deep ink for headlines and core text.
-- **Tertiary (#B8422E):** the sole driver for interaction.
+- **Primary (#1A1C1E):** deep ink for headlines, core text and the one filled button on a screen.
+  Never a page background, because the interface is meant to read as paper.
+- **Tertiary (#B8422E):** the sole driver for interaction: links, the focus ring, a selected tab.
+  Never decoration, so that colour always means something can be pressed.
 
 ## Do's and Don'ts
 - Do use the primary colour only for the single most important action per screen.
@@ -89,14 +115,14 @@ A calm, professional interface for a healthcare scheduling platform. Sources: da
 
 ## Three ways it gets written
 
-1. **From the brand pack**: the agent translates BRAND.md's sourced rules into the token block and body, naming the pack as the source. The usual route when a pack exists.
+1. **From the brand's guidelines**: onboarding (brands.md) translates the supplied material's sourced rules into the token block and body, naming each source. The usual route when a brand exists.
 2. **From existing code**: `extract-design-md`, when installed, scans stylesheets, theme files and component styles without building; otherwise the agent reads the same places and writes the file. The route for a redesign.
 3. **From Stitch**: a project iterated in Stitch without a prior file exports its DESIGN.md with the project zip, and Stitch's design-system panel edits it in place. The route when there was no brand and the direction was found in Stitch.
 
 ## Keeping it honest
 
-- `npx -p @google/design.md designmd lint DESIGN.md` runs eight rules: a broken token reference (error), no `primary` colour, a component whose text and background fall below 4.5:1, colour tokens no component uses, colours without any typography, sections out of order, missing optional sections, and a token count. Run it whenever the file changes; exit code 1 means an error. The shorter `npx @google/design.md lint` form prints nothing on Windows.
+- `npx -p @google/design.md designmd lint docs/DESIGN.md` runs nine rules: a broken token reference (error), no `primary` colour, a component whose text and background fall below 4.5:1, colour tokens no component uses, colours without any typography, sections out of order, missing optional sections, a top-level key that looks like a misspelt spec key, and a token count. Run it whenever the file changes; exit code 1 means an error. The shorter `npx @google/design.md lint` form prints nothing on Windows.
 - `npx -p @google/design.md designmd diff before.md after.md` reports tokens added, removed and changed and flags a regression.
-- `npx -p @google/design.md designmd export --format tailwind DESIGN.md` emits a `theme.extend` object; `--format dtcg` emits W3C design tokens for a project that styles through CSS variables.
-- The detector's four design-system rules fire only on values declared in the front matter, so an undeclared colour, font, size or radius in the CSS is reported against this file. A prose-only DESIGN.md is invisible to it.
+- `npx -p @google/design.md designmd export --format css-tailwind docs/DESIGN.md` emits a Tailwind v4 `@theme` block of CSS variables; `--format json-tailwind` emits a Tailwind v3 `theme.extend` object; `--format dtcg` emits W3C design tokens for a project that styles through CSS variables.
+- The detector's four design-system rules fire only on values declared in the front matter, so an undeclared colour, font, size or radius in the CSS is reported against this file. A prose-only DESIGN.md is invisible to it. It walks up from the edited file and stops at the first folder holding a `package.json`, a `.git` or an `.impeccable/`, and looks there only, in that folder itself, its `docs/` and its `.agents/context/`; it looks above that folder only when a root declares it as a workspace. So where the interface has its own `package.json` in a subfolder (`frontend/`), a `docs/DESIGN.md` at the repo root is never reached and the four rules stay silent. Prove them after placing the file: `detect` a scratch stylesheet beside the real ones holding one colour outside the palette, and expect a finding. `impeccable doctor --json` prints the `designPath` and `productPath` it resolved, and takes both from one folder, which is why PRODUCT.md sits beside DESIGN.md.
 - The detector keeps a sidecar at `.impeccable/design.json` holding what the eight-property component schema cannot (shadows, motion, breakpoints, tonal ramps, full component CSS). Keep it at least `{"schemaVersion": 2, "extensions": {}}` and touch it after every DESIGN.md edit, or the detector notes the file is newer than its sidecar on every session. `impeccable doctor --json` reports drift between them.

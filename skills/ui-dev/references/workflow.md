@@ -2,8 +2,8 @@
 
 ## Terms
 
-- **Brand pack**: the client's identity as they gave it, in `data/brand/<slug>/` in the working repo: BRAND.md, TONE-OF-VOICE.md, ASSET-INDEX.md, sources and assets (brands.md).
-- **Design file**: the project's `DESIGN.md` at the repo root, tokens and rationale in the open spec, written from the pack and evolving with the built world (design-file.md).
+- **Design file**: `docs/DESIGN.md`, the brand's visual identity and the project's design system in the open spec: tokens, rationale, logos and motion, written from the brand's guidelines and evolving with the built world (design-file.md).
+- **Brand pack**: `docs/brand/` beside it, holding what the spec has no place for: TONE-OF-VOICE.md, the asset files and the sources (brands.md).
 - **Direction**: the project-specific composition, typography, palette, hierarchy and interaction intent for a surface.
 - **Approved package**: the chosen Stitch screens, one per device type the surface needs, a motion storyboard where narrative motion is in scope, and the design file updated to match. The approved package is authoritative for the build.
 

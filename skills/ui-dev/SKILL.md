@@ -46,8 +46,8 @@ text are preserved.
 **Companions** in this plugin: `extract-static-html` captures a running screen as one HTML file,
 `upload-to-stitch` posts images and HTML to Stitch, `extract-design-md` reads a DESIGN.md out of
 existing source, `react-components` turns a Stitch screen into React. When calling them, this
-workflow's two gates are the only approval points, and the project's DESIGN.md is the one at the
-repo root wherever a companion names `.stitch/DESIGN.md`.
+workflow's two gates are the only approval points, and the project's DESIGN.md is `docs/DESIGN.md`
+wherever a companion names `.stitch/DESIGN.md`.
 
 ## 1. The design read
 
